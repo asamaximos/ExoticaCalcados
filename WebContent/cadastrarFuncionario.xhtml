@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+
+<h:head></h:head>
+
+<h:body>
+	<h:form>
+		<h:graphicImage name="C:\Users\LuizNeto\Pictures\images" />
+		<p:menubar>
+			<p:submenu label="Funcionario" icon=".ui-icon-person">
+				<p:menuitem value="Cadastrar" url="cadastrarFuncionario.jsf" />
+				<p:menuitem value="Editar Funcionario" url="manterFuncionario.jsf" />
+
+
+
+			</p:submenu>
+		</p:menubar>
+	</h:form>
+	<p:panel>
+		<center>
+			<h:form id="cadastro">
+				<p:panel>
+					<p:outputPanel>Cadastro de Funcionarios </p:outputPanel>
+					<h:panelGrid columns="2">
+						<h:outputText value="NOME :" size="20" />
+						<p:inputText id="nome" size="20"
+							value="#{funcionarioBean.funcionario.pessoaFisica.pessoa.nome}" />
+						<h:outputText value="Rua:" />
+						<p:inputText id="rua" size="20"
+							value="#{funcionarioBean.funcionario.pessoaFisica.pessoa.rua}" />
+						<h:outputText value="CIDADE" />
+						<p:inputText id="cidade" size="20"
+							value="#{funcionarioBean.funcionario.pessoaFisica.pessoa.cidade}" />
+						<h:outputText value="CEp: " />
+						<p:inputText id="cep" size="20"
+							value="#{funcionarioBean.funcionario.pessoaFisica.pessoa.cep}" />
+						<h:outputText value="Estado" />
+						<p:inputText id="estado" size="20"
+							value="#{funcionarioBean.funcionario.pessoaFisica.pessoa.estado}" />
+						<h:outputText value="CPF" />
+						<p:inputMask id="cpf" mask="999.999.999-99" size="20"
+							value="#{funcionarioBean.funcionario.pessoaFisica.cpf}" />
+						<h:outputText value="Idade" />
+						<p:inputText id="idade" size="20"
+							value="#{funcionarioBean.funcionario.pessoaFisica.idade}" />
+						<h:outputText value="Sexo" />
+						<p:inputText id="sexo" size="20"
+							value="#{funcionarioBean.funcionario.pessoaFisica.sexo}" />
+						<h:outputText value="Telefone" />
+						<p:inputText id="telefone" size="20"
+							value="#{funcionarioBean.funcionario.pessoaFisica.telefone}" />
+						<h:outputText value="Email" />
+						<p:inputText id="email" size="20"
+							value="#{funcionarioBean.funcionario.pessoaFisica.email}" />
+						<h:outputText value="cargo" />
+						<p:inputText id="cargo" size="20"
+							value="#{funcionarioBean.funcionario.cargo}" />
+						<h:outputText value="Data de Admissão" />
+						<p:inputText id="dataAdmissao" size="20"
+							value="#{funcionarioBean.funcionario.dataAdmissao}" />
+						<h:outputText value="Salário" />
+						<p:inputText id="salario" size="20"
+							value="#{funcionarioBean.funcionario.salario}" />
+						<p:commandButton value="salvar"
+							actionListener="#{funcionarioBean.salvar}"
+							action="cadastrarFuncionario" update="cadastro" />
+						<p:commandButton value="Limpar" type="reset" />
+
+					</h:panelGrid>
+
+				</p:panel>
+				<h1>Mal Desenvolvimento de sistemas</h1>
+			</h:form>
+		</center>
+	</p:panel>
+</h:body>
+</html>

@@ -2,7 +2,6 @@ package br.com.fip.pp.exoticacalcados.testes;
 
 import java.util.List;
 
-import br.com.fip.pp.exoticacalcados.bean.ClienteBean;
 import br.com.fip.pp.exoticacalcados.business.ClienteBusiness;
 import br.com.fip.pp.exoticacalcados.entidades.Cliente;
 import br.com.fip.pp.exoticacalcados.entidades.Pessoa;
@@ -26,24 +25,13 @@ public class ClienteTeste {
 		pessoaFisica.setPessoa(pessoa);
 		cliente.setPessoaFisica(pessoaFisica);
 		*/
+		ClienteBusiness cliBusiness = new ClienteBusiness();
 		//cliBusiness.salvar(cliente);
-		ClienteBean cliBean = new ClienteBean();
-		List<Cliente> listaCliente = cliBean.getListaClientes();
+		List<Cliente> listaCliente = cliBusiness.listar();
 		for (Cliente cliente2 : listaCliente) {
 			System.out.println(cliente2.getPessoaFisica().getPessoa().getNome());
 		}
 		
-		
-		cliente = listaCliente.get(1);
-		cliBean.setCliente(cliente);
-		System.out.println(cliente);
-		cliBean.getCliente().getPessoaFisica().getPessoa().setNome("Seila");
-		System.out.println(cliente);
-		cliBean.alterar();
-		listaCliente = cliBean.getListaClientes();
-		for (Cliente cliente2 : listaCliente) {
-			System.out.println(cliente2.getPessoaFisica().getPessoa().getNome());
-		}
 		
 	}
 

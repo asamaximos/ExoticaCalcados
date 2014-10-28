@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Exotica Calcados - Pesquisa de Cliente</title>
+</h:head>
+<h:body>
+	<h:form>
+		<p:column rowpan="3">
+			<p:graphicImage url="C:\Users\LuizNeto\Pictures\images.jpg"
+				width="40px" height="40px" />
+		</p:column>
+		<h:form>
+
+			<p:menubar>
+				<p:submenu label="pessoa" icon=".ui-icon-person">
+					<p:submenu label="novoCliente" icon="ui-icon-contact">
+						<p:menuitem value="cadastro" url="cadastrarPessoa.jsf" />
+						<p:menuitem value="editar Cliente" url="editarPessoaFisica.jsf" />
+						<p:menuitem value="teste" url="Teste.jsf" />
+						<p:menuitem value="Other" url="#" />
+					</p:submenu>
+
+
+				</p:submenu>
+			</p:menubar>
+		</h:form>
+
+
+		<p:growl id="growl" sticky="true" showDetail="true" />
+	</h:form>
+	<h:form id="form">
+		<p:panel header="Gerenciar Produtos">
+			<p:growl id="messages" showDetail="true" />
+			<p:dataTable id="datatable"
+				emptyMessage="Não há Produtos cadastrados" var="produto"
+				value="#{produtoBean.listaProdutos}" rendered="true"
+				paginator="true" rows="20" rowKey="#{produto.id}"
+				selection="#{produtoBean.listaProdutos}" selectionMode="single">
+
+				<p:column headerText="Codigo">
+					#{produto.codigo}
+				</p:column>
+				<p:column headerText="Nome">
+					#{produto.nome}
+				</p:column>
+				<p:column headerText="Marca">
+					#{produto.marca}
+				</p:column>
+				<p:column headerText="Observação">
+					#{produto.observação}
+				</p:column>
+				<p:column headerText="Valor de Compra">
+					#{produto.valorDeCompra}
+				</p:column>
+				<p:column headerText="Valor de Venda">
+					#{produto.valorDeVenda}
+				</p:column>
+				<p:column headerText="Referencia">
+					#{produto.referencia}
+				</p:column>
+
+				<f:facet name="footer">
+					<p:commandButton id="view" value="Visualizar" icon="ui-icon-search"
+						update=":formView" oncomplete="visualizar.show()">
+
+					</p:commandButton>
+					<p:commandButton id="edit" value="Editar" icon="ui-icon-pencil"
+						update=":formEdit" oncomplete="editarProduto.show()">
+
+					</p:commandButton>
+					<p:commandButton id="remover" value="Remover" icon="ui-icon-trash"
+						update=":formCad" oncomplete="removerProduto.show()">
+
+					</p:commandButton>
+				</f:facet>
+
+
+			</p:dataTable>
+			<p:outputLabel>MAL desenvolvimento de sistema</p:outputLabel>
+		</p:panel>
+	</h:form>
+
+	<p:dialog widgetVar="editarCliente" modal="true"
+		header="Editar Cliente">
+		<h:form id="formEdit">
+
+			<p:growl id="growl" sticky="true" showDetail="true" />
+
+			<h:panelGrid columns="2" cellspacing="15">
+
+
+				<h:outputText value="Codigo: " />
+				<p:inputText value="#{produtoBean.produto.codigo}" />
+
+				<h:outputText value="MArca: " />
+				<p:inputText value="#{produtoBean.produto.marca}" />
+
+				<h:outputText value="Observação: " />
+				<p:inputText value="#{produtoBean.produto.observação}" />
+
+				<h:outputText value="Valor DE Compra: " />
+				<p:inputText value="#{produtoBean.produto.valorDeCompra}" />
+
+				<h:outputText value="Valor de Venda: " />
+				<p:inputText value="#{produtoBean.produto.valorDeVenda}" />
+
+				<h:outputText value="Referencia: " />
+				<p:inputText value="#{produtoBean.produto.referencia}" />
+
+				<p:commandButton actionListener="#{ProdutoBean.salvar()}"
+					update=":formEdit" oncomplete="editarProduto.hide()"
+					value="Salvar Alterações" icon="ui-icon-circle-check" />
+			</h:panelGrid>
+
+		</h:form>
+	</p:dialog>
+	<p:dialog widgetVar="removerProduto" modal="true"
+		header="Remover Produto">
+		<h:form id="formCad">
+
+			<p:growl id="growl" sticky="true" showDetail="true" />
+
+			<h:panelGrid columns="2" cellspacing="15">
+
+				<h:outputText value="Codigo: " />
+				<p:inputText value="#{produtoBean.produto.codigo}" />
+
+				<h:outputText value="MArca: " />
+				<p:inputText value="#{produtoBean.produto.marca}" />
+
+				<h:outputText value="Observação: " />
+				<p:inputText value="#{produtoBean.produto.observação}" />
+
+				<h:outputText value="Valor DE Compra: " />
+				<p:inputText value="#{produtoBean.produto.valorDeCompra}" />
+
+				<h:outputText value="Valor de Venda: " />
+				<p:inputText value="#{produtoBean.produto.valorDeVenda}" />
+
+				<h:outputText value="Referencia: " />
+				<p:inputText value="#{produtoBean.produto.referencia}" />
+
+
+				<p:commandButton actionListener="#{ProdutoBean.salvar()}"
+					update=":form" oncomplete="removerProduto.hide()" value="Remover"
+					icon="ui-icon-trash" />
+				<p:commandButton update=":form" oncomplete="removerProduto.hide()"
+					value="Cancelar" icon="ui-icon-cancel" />
+			</h:panelGrid>
+
+		</h:form>
+	</p:dialog>
+
+
+	<p:dialog widgetVar="visualizar" modal="true"
+		header="Visualizar Produtos">
+		<h:form id="formView">
+
+			<p:growl id="growl" sticky="true" showDetail="true" />
+
+			<h:panelGrid columns="2" cellspacing="15">
+				<h:outputText value="Codigo: " />
+				<p:inputText value="#{produtoBean.produto.codigo}" />
+
+				<h:outputText value="MArca: " />
+				<p:inputText value="#{produtoBean.produto.marca}" />
+
+				<h:outputText value="Observação: " />
+				<p:inputText value="#{produtoBean.produto.observação}" />
+
+				<h:outputText value="Valor DE Compra: " />
+				<p:inputText value="#{produtoBean.produto.valorDeCompra}" />
+
+				<h:outputText value="Valor de Venda: " />
+				<p:inputText value="#{produtoBean.produto.valorDeVenda}" />
+
+				<h:outputText value="Referencia: " />
+				<p:inputText value="#{produtoBean.produto.referencia}" />
+
+
+				<p:commandButton update=":formView" oncomplete="visualizar.hide()"
+					value="Fechar" icon="ui-icon-closethick" />
+			</h:panelGrid>
+
+		</h:form>
+	</p:dialog>
+</h:body>
+</html>
+

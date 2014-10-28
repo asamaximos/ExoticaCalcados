@@ -12,17 +12,17 @@
 
 	<h:form>
 		<p:menubar>
-        <p:submenu label="pessoa" icon=".ui-icon-person">
-            <p:submenu label="nova pesosa" icon="ui-icon-contact">
-                <p:menuitem value="cadastro" url="inicio.jsf" />
-                <p:menuitem value="Other" url="#" />
-            </p:submenu>
-           
-        </p:submenu>
-        </p:menubar>
-       
+			<p:submenu label="pessoa" icon=".ui-icon-person">
+				<p:submenu label="nova pesosa" icon="ui-icon-contact">
+					<p:menuitem value="cadastro" url="inicio.jsf" />
+					<p:menuitem value="editar" url="editarPessoa.jsf" />
+				</p:submenu>
+
+			</p:submenu>
+		</p:menubar>
+
 	</h:form>
-	
+
 	<h:form>
 
 		<center>
@@ -31,11 +31,12 @@
 				<h:inputText maxlength="8" size="20" />
 				<p:outputLabel value="Senha:" />
 				<h:inputSecret size="20" maxlength="5" />
-				<p:commandButton value="gravar" action="inicio.JSF" actionListener="inicio.xhtml" />
+				<p:commandButton value="gravar" action="inicio.JSF"
+					actionListener="inicio.xhtml" />
 				<p:commandButton value="click aqui" size="20" />
 			</h:panelGrid>
 		</center>
 	</h:form>
-	
+
 </h:body>
 </html>

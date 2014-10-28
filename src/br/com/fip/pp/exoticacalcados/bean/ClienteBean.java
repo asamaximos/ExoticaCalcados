@@ -1,11 +1,9 @@
 package br.com.fip.pp.exoticacalcados.bean;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 
 import br.com.fip.pp.exoticacalcados.business.ClienteBusiness;
@@ -13,69 +11,75 @@ import br.com.fip.pp.exoticacalcados.entidades.Cliente;
 import br.com.fip.pp.exoticacalcados.entidades.Pessoa;
 import br.com.fip.pp.exoticacalcados.entidades.PessoaFisica;
 
-@ManagedBean(name="ClienteBean")
-@RequestScoped
-public class ClienteBean {
-	private Pessoa pessoa;
-	private PessoaFisica pessoaFisica;
+@ManagedBean
+@ViewScoped
+public class ClienteBean implements Serializable {
+
 	private Cliente cliente;
-	private ClienteBusiness clienteBusiness = new ClienteBusiness();
+	private ClienteBusiness clienteBusiness;
 	private List<Cliente> listaClientes;
 
 	public ClienteBean() {
-		pessoa = new Pessoa();
-		pessoaFisica = new PessoaFisica();
-		pessoaFisica.setPessoa(pessoa);
+		clienteBusiness = new ClienteBusiness();
 		cliente = new Cliente();
-		cliente.setPessoaFisica(pessoaFisica);
-		
+		cliente.setPessoaFisica(new PessoaFisica());
+		cliente.getPessoaFisica().setPessoa(new Pessoa());
 	}
 
-	public Pessoa getPessoa() {
-		return pessoa;
+	public void salvar() {
+		System.out.println(cliente);
+		clienteBusiness.salvar(cliente);
 	}
 
-	public void setPessoa(Pessoa pessoa) {
-		this.pessoa = pessoa;
+	public void alterar() {
+		clienteBusiness.alterar(cliente);
 	}
 
-	public PessoaFisica getPessoaFisica() {
-		return pessoaFisica;
+	public void deletar() {
+		clienteBusiness.deletar(cliente);
 	}
 
-	public void setPessoaFisica(PessoaFisica pessoaFisica) {
-		this.pessoaFisica = pessoaFisica;
+	public List<Cliente> getListaClientes() {
+		this.listaClientes = clienteBusiness.listar();
+		return listaClientes;
 	}
 
+	/**
+	 * @return the cliente
+	 */
 	public Cliente getCliente() {
 		return cliente;
 	}
 
+	/**
+	 * @param cliente
+	 *            the cliente to set
+	 */
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
 
-	public void salvarCliente() {
-		this.clienteBusiness.openSession();
-		clienteBusiness.salvar(cliente);
-		this.clienteBusiness.closeSession();
-	}
-	public void alterar(){
-		this.clienteBusiness.openSession();
-		System.out.println(cliente);
-		clienteBusiness.alterar(cliente);
-		this.clienteBusiness.closeSession();
-	}
-	public void remover(){
-		clienteBusiness.deletar(cliente);
+	/**
+	 * @return the clienteBusiness
+	 */
+	public ClienteBusiness getClienteBusiness() {
+		return clienteBusiness;
 	}
 
-
-
-	public List<Cliente> getListaClientes() {
-		this.clienteBusiness.openSession();
-		this.listaClientes = clienteBusiness.listar();
-		this.clienteBusiness.closeSession();
-		return listaClientes;
+	/**
+	 * @param clienteBusiness
+	 *            the clienteBusiness to set
+	 */
+	public void setClienteBusiness(ClienteBusiness clienteBusiness) {
+		this.clienteBusiness = clienteBusiness;
 	}
+
+	/**
+	 * @param listaClientes
+	 *            the listaClientes to set
+	 */
+	public void setListaClientes(List<Cliente> listaClientes) {
+		this.listaClientes = listaClientes;
+	}
+
 }

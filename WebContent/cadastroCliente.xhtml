@@ -11,12 +11,12 @@
 
 <h:body>
 	<h:form>
-
+			<h:graphicImage name="C:\Users\LuizNeto\Pictures\images" />
 		<p:menubar>
 			<p:submenu label="pessoa" icon=".ui-icon-person">
 				<p:submenu label="novoCliente" icon="ui-icon-contact">
-					<p:menuitem value="cadastro" url="cadastrarPessoa.jsf" />
-					<p:menuitem value="editar Cliente" url="editarPessoaFisica.jsf" />
+					<p:menuitem value="cadastro" url="cadastroCliente.jsf" />
+					<p:menuitem value="editar Cliente" url="manterCliente.jsf" />
 					<p:menuitem value="teste" url="Teste.jsf" />
 					<p:menuitem value="Other" url="#" />
 				</p:submenu>
@@ -33,37 +33,37 @@
 					<h:panelGrid columns="2">
 						<h:outputText value="NOME :" size="20" />
 						<p:inputText id="nome" size="20"
-							value="#{ClienteBean.cliente.pessoaFisica.pessoa.nome}" />
+							value="#{clienteBean.cliente.pessoaFisica.pessoa.nome}" />
 						<h:outputText value="Sexo" />
 						<p:inputText id="sexo" size="1"
-							value="#{ClienteBean.cliente.pessoaFisica.sexo}" />
+							value="#{clienteBean.cliente.pessoaFisica.sexo}" />
 						<h:outputText value="CPF*:" size="20" />
 						<p:inputMask id="cpf" mask="999.999.999-99" size="20"
-							value="#{ClienteBean.cliente.pessoaFisica.cpf}" />
+							value="#{clienteBean.cliente.pessoaFisica.cpf}" />
 						<h:outputText value="Rua:" />
 						<p:inputText id="rua" size="20"
-							value="#{ClienteBean.cliente.pessoaFisica.pessoa.rua}" />
+							value="#{clienteBean.cliente.pessoaFisica.pessoa.rua}" />
 						<h:outputText value="CEp: " />
 						<p:inputText id="cep" size="20"
-							value="#{ClienteBean.cliente.pessoaFisica.pessoa.cep}" />
+							value="#{clienteBean.cliente.pessoaFisica.pessoa.cep}" />
 						<h:outputText value="Idade" size="20" />
 						<p:inputText id="idade" size="2"
-							value="#{ClienteBean.cliente.pessoaFisica.idade}" />
+							value="#{clienteBean.cliente.pessoaFisica.idade}" />
 						<h:outputText value="telefone" size="20" />
 						<p:inputText id="telefone" size="20"
-							value="#{ClienteBean.cliente.pessoaFisica.telefone}" />
+							value="#{clienteBean.cliente.pessoaFisica.telefone}" />
 						<h:outputText value="CIDADE" />
 						<p:inputText id="cidade" size="20"
-							value="#{ClienteBean.cliente.pessoaFisica.pessoa.cidade}" />
+							value="#{clienteBean.cliente.pessoaFisica.pessoa.cidade}" />
 						<h:outputText value="Estado" />
 						<p:inputText id="estado" size="20"
-							value="#{ClienteBean.cliente.pessoaFisica.pessoa.estado}" />
+							value="#{clienteBean.cliente.pessoaFisica.pessoa.estado}" />
 						<h:outputText value="Email" />
 						<p:inputText id="email" size="20"
-							value="#{ClienteBean.cliente.pessoaFisica.email}" />
-						<p:commandButton value="salvar"
-							actionListener="#{ClienteBean.salvarCliente()}"
-							action="index.jsf" update="cadastro" />
+							value="#{clienteBean.cliente.pessoaFisica.email}" />
+						<p:commandButton  value="salvar"
+							actionListener="#{clienteBean.salvarCliente}"
+							action="cadastroCliente" update="cadastro" />
 						<p:commandButton value="Limpar" type="reset"  />
 
 					</h:panelGrid>

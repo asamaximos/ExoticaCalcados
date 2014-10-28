@@ -3,11 +3,12 @@
                                          "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
  <session-factory name="">
-  <property name="hibernate.connection.autocommit">false</property>
   <property name="current_session_context_class">thread</property>
   <mapping class="br.com.fip.pp.exoticacalcados.entidades.Pessoa"/>
   <mapping class="br.com.fip.pp.exoticacalcados.entidades.PessoaFisica"/>
   <mapping class="br.com.fip.pp.exoticacalcados.entidades.Cliente"/>
+   <mapping class="br.com.fip.pp.exoticacalcados.entidades.Produto"/>
+   <mapping class="br.com.fip.pp.exoticacalcados.entidades.Funcionario"/>
   
  </session-factory>
 </hibernate-configuration>

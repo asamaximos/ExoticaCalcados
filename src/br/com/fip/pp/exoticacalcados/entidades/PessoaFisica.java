@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.websocket.OnOpen;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
@@ -32,7 +31,7 @@ public class PessoaFisica  implements Serializable  {
 	private String telefone;
 	@Column (name="email")
 	private String email;
-	@OneToOne 
+	@OneToOne
 	@Cascade (CascadeType.ALL)
 	private Pessoa pessoa;
 
@@ -72,11 +71,14 @@ public class PessoaFisica  implements Serializable  {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + idade;
+		result = prime * result + sexo;
+		result = prime * result
+				+ ((telefone == null) ? 0 : telefone.hashCode());
 		return result;
 	}
-
-	
 
 	@Override
 	public boolean equals(Object obj) {
@@ -87,7 +89,21 @@ public class PessoaFisica  implements Serializable  {
 		if (getClass() != obj.getClass())
 			return false;
 		PessoaFisica other = (PessoaFisica) obj;
+		if (cpf == null) {
+			if (other.cpf != null)
+				return false;
+		} else if (!cpf.equals(other.cpf))
+			return false;
 		if (id != other.id)
+			return false;
+		if (idade != other.idade)
+			return false;
+		if (sexo != other.sexo)
+			return false;
+		if (telefone == null) {
+			if (other.telefone != null)
+				return false;
+		} else if (!telefone.equals(other.telefone))
 			return false;
 		return true;
 	}

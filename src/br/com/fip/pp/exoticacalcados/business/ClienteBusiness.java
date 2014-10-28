@@ -10,7 +10,7 @@ import br.com.fip.pp.exoticacalcados.repositorio.Repositorio;
 
 public class ClienteBusiness implements Serializable, Repositorio<Cliente> {
 	private ClienteDao clienteDao;
-	private List<Cliente> listaClientes;
+	private List<Cliente> listaClientes = new ArrayList<Cliente>();
 
 	public ClienteBusiness() {
 		clienteDao = new ClienteDao();
@@ -18,43 +18,31 @@ public class ClienteBusiness implements Serializable, Repositorio<Cliente> {
 
 	@Override
 	public void salvar(Cliente cliente) {
+		clienteDao.openSession();
 		clienteDao.salvar(cliente);
-
+		clienteDao.closedSession();
 	}
 
 	@Override
 	public void alterar(Cliente cliente) {
+		clienteDao.openSession();
 		clienteDao.alterar(cliente);
-
+		clienteDao.closedSession();
 	}
 
 	@Override
 	public void deletar(Cliente cliente) {
+		clienteDao.openSession();
 		clienteDao.deletar(cliente);
-
+		clienteDao.closedSession();
 	}
 
 	@Override
 	public List<Cliente> listar() {
+		clienteDao.openSession();
 		listaClientes = clienteDao.listar();
+		clienteDao.closedSession();
 		return listaClientes;
 	}
-
-	public List<Cliente> getListaClientes() {
-		return listaClientes;
-	}
-
-	public void setListaClientes(List<Cliente> listaClientes) {
-		this.listaClientes = listaClientes;
-	}
-	
-	public void closeSession(){
-		this.clienteDao.closeSession();
-	}
-	
-	public void openSession(){
-		this.clienteDao.openSession();
-	}
-	
 
 }
