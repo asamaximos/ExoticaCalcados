@@ -1,0 +1,220 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>SCA - Pesquisa de Cliente</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h:form>
+
+			<p:menubar>
+				<p:submenu label="pessoa" icon=".ui-icon-person">
+					<p:submenu label="novoCliente" icon="ui-icon-contact">
+						<p:menuitem value="cadastro" url="cadastrarPessoa.jsf" />
+						<p:menuitem value="editar Cliente" url="editarPessoaFisica.jsf" />
+						<p:menuitem value="teste" url="Teste.jsf" />
+						<p:menuitem value="Other" url="#" />
+					</p:submenu>
+
+
+				</p:submenu>
+			</p:menubar>
+		</h:form>
+
+
+		<p:growl id="growl" sticky="true" showDetail="true" />
+	</h:form>
+	<h:form id="form">
+		<p:panel header="Gerenciar Clientes">
+			<p:growl id="messages" showDetail="true" />
+			<p:dataTable id="cars" emptyMessage="Não há Clientes cadastrados"
+				var="cliente" value="#{ClienteBean.listaClientes}" rendered="true"
+				paginator="true" rows="20" rowKey="#{cliente.id}"
+				selection="#{ClienteBean.cliente}" selectionMode="single">
+
+
+
+				<p:column headerText="Código" filterBy="#{cliente.id}">  
+                    #{cliente.id}  
+                </p:column>
+
+				<p:column headerText="Nome"
+					filterBy="#{cliente.pessoaFisica.pessoa.nome}">  
+                    #{cliente.pessoaFisica.pessoa.nome}  
+                </p:column>
+
+				<p:column headerText="CPF" filterBy="#{cliente.pessoaFisica.cpf}">  
+                    #{cliente.pessoaFisica.cpf}  
+                </p:column>
+
+				<p:column headerText="Sexo" filterBy="#{cliente.pessoaFisica.sexo}">  
+                    #{cliente.pessoaFisica.sexo}  
+                </p:column>
+
+				<p:column headerText="Telefone"
+					filterBy="#{cliente.pessoaFisica.telefone}">  
+                    #{cliente.pessoaFisica.telefone}  
+                </p:column>
+
+				<p:column headerText="Cidade."
+					filterBy="#{cliente.pessoaFisica.pessoa.cidade}">  
+                    #{cliente.pessoaFisica.pessoa.cidade}  
+                </p:column>
+
+				<f:facet name="footer">
+					<p:commandButton id="view" value="Visualizar" icon="ui-icon-search"
+						update=":formView" oncomplete="visualizar.show()">
+
+					</p:commandButton>
+					<p:commandButton id="edit" value="Editar" icon="ui-icon-pencil"
+						update=":formEdit" oncomplete="editarCliente.show()">
+
+					</p:commandButton>
+					<p:commandButton id="remover" value="Remover" icon="ui-icon-trash"
+						update=":formCad" oncomplete="removerCliente.show()">
+
+					</p:commandButton>
+				</f:facet>
+				
+
+			</p:dataTable>
+			<p:outputLabel>MAl desenvolvimento de sistema</p:outputLabel>
+		</p:panel>
+	</h:form>
+
+	<p:dialog widgetVar="editarCliente" modal="true"
+		header="Editar Cliente">
+		<h:form id="formEdit">
+
+			<p:growl id="growl" sticky="true" showDetail="true" />
+
+			<h:panelGrid columns="2" cellspacing="15">
+
+				<h:outputText value="ID: "/>
+				<h:outputText value="#{ClienteBean.cliente.id}"/>
+				<h:outputText value="Nome: " />
+				<p:inputText value="#{ClienteBean.cliente.pessoaFisica.pessoa.nome}" />
+
+				<h:outputText value="CPF: " />
+				<p:inputText value="#{ClienteBean.cliente.pessoaFisica.cpf}" />
+
+				<h:outputText value="Idade: " />
+				<p:inputText value="#{ClienteBean.cliente.pessoaFisica.idade}" />
+
+				<h:outputText value="Sexo: " />
+				<p:inputText value="#{ClienteBean.cliente.pessoaFisica.sexo}" />
+
+				<h:outputText value="Estado: " />
+				<p:inputText
+					value="#{ClienteBean.cliente.pessoaFisica.pessoa.estado}" />
+
+				<h:outputText value="Rua: " />
+				<p:inputText value="#{ClienteBean.cliente.pessoaFisica.pessoa.rua}" />
+
+				<h:outputText value="CEp: " />
+				<p:inputText value="#{ClienteBean.cliente.pessoaFisica.pessoa.cep}" />
+
+				<h:outputText value="Email: " />
+				<p:inputText value="#{ClienteBean.cliente.pessoaFisica.email}" />
+
+
+				<p:commandButton actionListener="#{ClienteBean.alterar}"
+					update=":form" oncomplete="editarCliente.hide()"
+					value="Salvar Alterações" icon="ui-icon-circle-check" />
+			</h:panelGrid>
+
+		</h:form>
+	</p:dialog>
+	<p:dialog widgetVar="removerCliente" modal="true"
+		header="Remover Cliente">
+		<h:form id="formCad">
+
+			<p:growl id="growl" sticky="true" showDetail="true" />
+
+			<h:panelGrid columns="2" cellspacing="15">
+
+				<h:outputText value="Nome: " />
+				<h:outputText
+					value="#{ClienteBean.cliente.pessoaFisica.pessoa.nome}" />
+
+				<h:outputText value="CPF: " />
+				<h:outputText value="#{ClienteBean.cliente.pessoaFisica.cpf}" />
+
+				<h:outputText value="Idade: " />
+				<h:outputText value="#{ClienteBean.cliente.pessoaFisica.idade}" />
+
+				<h:outputText value="Sexo: " />
+				<h:outputText value="#{ClienteBean.cliente.pessoaFisica.sexo}" />
+
+				<h:outputText value="Estado: " />
+				<h:outputText
+					value="#{ClienteBean.cliente.pessoaFisica.pessoa.estado}" />
+
+				<h:outputText value="Rua: " />
+				<h:outputText value="#{ClienteBean.cliente.pessoaFisica.pessoa.rua}" />
+
+				<h:outputText value="CEp: " />
+				<h:outputText value="#{ClienteBean.cliente.pessoaFisica.pessoa.cep}" />
+
+				<h:outputText value="Email: " />
+				<h:outputText value="#{ClienteBean.cliente.pessoaFisica.email}" />
+
+
+				<p:commandButton actionListener="#{ClienteBean.remover()}"
+					update=":form" oncomplete="removerCliente.hide()" value="Remover"
+					icon="ui-icon-trash" />
+				<p:commandButton update=":form" oncomplete="removerCliente.hide()"
+					value="Cancelar" icon="ui-icon-cancel" />
+			</h:panelGrid>
+
+		</h:form>
+	</p:dialog>
+
+
+	<p:dialog widgetVar="visualizar" modal="true"
+		header="Visualizar Cliente">
+		<h:form id="formView">
+
+			<p:growl id="growl" sticky="true" showDetail="true" />
+
+			<h:panelGrid columns="2" cellspacing="15">
+				<h:outputText value="Nome: " />
+				<h:outputText
+					value="#{ClienteBean.cliente.pessoaFisica.pessoa.nome}" />
+
+				<h:outputText value="CPF: " />
+				<h:outputText value="#{ClienteBean.cliente.pessoaFisica.cpf}" />
+
+				<h:outputText value="Idade: " />
+				<h:outputText value="#{ClienteBean.cliente.pessoaFisica.idade}" />
+
+				<h:outputText value="Sexo: " />
+				<h:outputText value="#{ClienteBean.cliente.pessoaFisica.sexo}" />
+
+				<h:outputText value="Estado: " />
+				<h:outputText
+					value="#{ClienteBean.cliente.pessoaFisica.pessoa.estado}" />
+
+				<h:outputText value="Rua: " />
+				<h:outputText value="#{ClienteBean.cliente.pessoaFisica.pessoa.rua}" />
+
+				<h:outputText value="CEp: " />
+				<h:outputText value="#{ClienteBean.cliente.pessoaFisica.pessoa.cep}" />
+
+				<h:outputText value="Email: " />
+				<h:outputText value="#{ClienteBean.cliente.pessoaFisica.email}" />
+
+
+				<p:commandButton update=":form" oncomplete="visualizar.hide()"
+					value="Fechar" icon="ui-icon-closethick" />
+			</h:panelGrid>
+
+		</h:form>
+	</p:dialog>
+</h:body>
+</html>
+

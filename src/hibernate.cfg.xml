@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+ <session-factory name="">
+  <property name="hibernate.connection.autocommit">false</property>
+  <property name="current_session_context_class">thread</property>
+  <mapping class="br.com.fip.pp.exoticacalcados.entidades.Pessoa"/>
+  <mapping class="br.com.fip.pp.exoticacalcados.entidades.PessoaFisica"/>
+  <mapping class="br.com.fip.pp.exoticacalcados.entidades.Cliente"/>
+  
+ </session-factory>
+</hibernate-configuration>
