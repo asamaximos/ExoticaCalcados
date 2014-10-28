@@ -11,17 +11,14 @@
 
 <h:body>
 	<h:form>
-			<h:graphicImage name="C:\Users\LuizNeto\Pictures\images" />
 		<p:menubar>
-			<p:submenu label="pessoa" icon=".ui-icon-person">
-				<p:submenu label="novoCliente" icon="ui-icon-contact">
-					<p:menuitem value="cadastro" url="cadastroCliente.jsf" />
-					<p:menuitem value="editar Cliente" url="manterCliente.jsf" />
-					<p:menuitem value="teste" url="Teste.jsf" />
-					<p:menuitem value="Other" url="#" />
-				</p:submenu>
-
-
+			<p:submenu label="Funcionario" icon=".ui-icon-person">
+				<p:menuitem value="Cadastrar" url="cadastrarFuncionario.jsf" />
+				<p:menuitem value="Editar Funcionario" url="manterFuncionario.jsf" />
+			</p:submenu>
+			<p:submenu label="Cliente" icon=".ui-icon-person">
+				<p:menuitem value="cadastrar" url="cadastrarCliente.jsf" />
+				<p:menuitem value="editar Cliente" url="manterCliente.jsf" />
 			</p:submenu>
 		</p:menubar>
 	</h:form>
@@ -29,7 +26,7 @@
 		<center>
 			<h:form id="cadastro">
 				<p:panel>
-				<p:outputPanel>Cadastro de Clientes </p:outputPanel>
+					<p:outputPanel>Cadastro de Clientes </p:outputPanel>
 					<h:panelGrid columns="2">
 						<h:outputText value="NOME :" size="20" />
 						<p:inputText id="nome" size="20"
@@ -61,13 +58,12 @@
 						<h:outputText value="Email" />
 						<p:inputText id="email" size="20"
 							value="#{clienteBean.cliente.pessoaFisica.email}" />
-						<p:commandButton  value="salvar"
-							actionListener="#{clienteBean.salvarCliente}"
-							action="cadastroCliente" update="cadastro" />
-						<p:commandButton value="Limpar" type="reset"  />
+						<p:commandButton value="salvar"
+							actionListener="#{clienteBean.salvar}" action="cadastrarCliente"
+							update="cadastro" />
+						<p:commandButton value="Limpar" type="reset" />
 
 					</h:panelGrid>
-
 				</p:panel>
 				<h1>Mal Desenvolvimento de sistemas</h1>
 			</h:form>

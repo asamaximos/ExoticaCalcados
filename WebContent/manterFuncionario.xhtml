@@ -8,15 +8,16 @@
 </h:head>
 <h:body>
 	<h:form>
-		<p:column rowpan="3">
-		</p:column>
 		<p:menubar>
 			<p:submenu label="Funcionario" icon=".ui-icon-person">
 				<p:menuitem value="Cadastrar" url="cadastrarFuncionario.jsf" />
 				<p:menuitem value="Editar Funcionario" url="manterFuncionario.jsf" />
 			</p:submenu>
+			<p:submenu label="Cliente" icon=".ui-icon-person">
+				<p:menuitem value="cadastrar" url="cadastrarCliente.jsf" />
+				<p:menuitem value="editar Cliente" url="manterCliente.jsf" />
+			</p:submenu>
 		</p:menubar>
-		<p:growl id="growl" sticky="true" showDetail="true" />
 	</h:form>
 	<h:form id="formGeral">
 		<p:panel header="Gerenciar Funcionarios">

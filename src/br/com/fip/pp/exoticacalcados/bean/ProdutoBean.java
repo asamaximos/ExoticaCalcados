@@ -9,7 +9,6 @@ import javax.faces.bean.SessionScoped;
 
 import br.com.fip.pp.exoticacalcados.business.ProdutoBusiness;
 import br.com.fip.pp.exoticacalcados.entidades.Produto;
-import br.com.fip.pp.exoticacalcados.repositorio.Repositorio;
 
 @SessionScoped
 @ManagedBean

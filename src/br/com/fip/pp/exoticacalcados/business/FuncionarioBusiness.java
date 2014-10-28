@@ -8,19 +8,21 @@ import br.com.fip.pp.exoticacalcados.dao.FuncionarioDao;
 import br.com.fip.pp.exoticacalcados.entidades.Funcionario;
 import br.com.fip.pp.exoticacalcados.repositorio.Repositorio;
 
-public class FuncionarioBusiness implements Serializable, Repositorio<Funcionario>{
+public class FuncionarioBusiness implements Serializable,
+		Repositorio<Funcionario> {
 	private FuncionarioDao FuncionarioDao;
 	private List<Funcionario> listaFuncionarios = new ArrayList<Funcionario>();
-	
+
 	public FuncionarioBusiness() {
 		FuncionarioDao = new FuncionarioDao();
 	}
+
 	@Override
 	public void salvar(Funcionario objeto) {
 		FuncionarioDao.openSession();
 		FuncionarioDao.salvar(objeto);
 		FuncionarioDao.closedSession();
-		
+
 	}
 
 	@Override
@@ -44,6 +46,5 @@ public class FuncionarioBusiness implements Serializable, Repositorio<Funcionari
 		FuncionarioDao.closedSession();
 		return listaFuncionarios;
 	}
-	
 
 }

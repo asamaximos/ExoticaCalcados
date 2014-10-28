@@ -27,7 +27,6 @@ public class ClienteBean implements Serializable {
 	}
 
 	public void salvar() {
-		System.out.println(cliente);
 		clienteBusiness.salvar(cliente);
 	}
 

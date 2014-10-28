@@ -2,7 +2,6 @@ package br.com.fip.pp.exoticacalcados.entidades;
 
 import java.io.Serializable;
 import java.util.Calendar;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,14 +18,14 @@ import org.hibernate.annotations.CascadeType;
 
 @Entity
 @Table(name = "Funcionario")
-public class Funcionario implements Serializable{
+public class Funcionario implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	@Column(name = "cargo")
 	private String cargo;
 	@Temporal(TemporalType.DATE)
-	private Date dataAdmissao;
+	private Calendar dataAdmissao;
 	@Column(name = "salario")
 	private double salario;
 	@OneToOne
@@ -64,11 +63,11 @@ public class Funcionario implements Serializable{
 		this.cargo = cargo;
 	}
 
-	public Date getDataAdmissao() {
+	public Calendar getDataAdmissao() {
 		return dataAdmissao;
 	}
 
-	public void setDataAdmissao(Date dataAdmissao) {
+	public void setDataAdmissao(Calendar dataAdmissao) {
 		this.dataAdmissao = dataAdmissao;
 	}
 

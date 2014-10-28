@@ -13,26 +13,25 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
-
 @Entity
 @Table(name = "Pessoa_Fisica")
-public class PessoaFisica  implements Serializable  {
+public class PessoaFisica implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	@Column
 	private String cpf;
-	@Column (name="idade")
+	@Column(name = "idade")
 	private int idade;
-	@Column (name="sexo")
+	@Column(name = "sexo")
 	private char sexo;
-	@Column (name="telefone")
+	@Column(name = "telefone")
 	private String telefone;
-	@Column (name="email")
+	@Column(name = "email")
 	private String email;
 	@OneToOne
-	@Cascade (CascadeType.ALL)
+	@Cascade(CascadeType.ALL)
 	private Pessoa pessoa;
 
 	public long getId() {
@@ -123,7 +122,7 @@ public class PessoaFisica  implements Serializable  {
 	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;
 	}
-	
+
 	public String getTelefone() {
 		return telefone;
 	}
@@ -139,5 +138,4 @@ public class PessoaFisica  implements Serializable  {
 				+ email + ", pessoa=" + pessoa + "]";
 	}
 
-	
 }

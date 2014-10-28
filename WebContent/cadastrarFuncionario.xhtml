@@ -11,14 +11,14 @@
 
 <h:body>
 	<h:form>
-		<h:graphicImage name="C:\Users\LuizNeto\Pictures\images" />
 		<p:menubar>
 			<p:submenu label="Funcionario" icon=".ui-icon-person">
 				<p:menuitem value="Cadastrar" url="cadastrarFuncionario.jsf" />
 				<p:menuitem value="Editar Funcionario" url="manterFuncionario.jsf" />
-
-
-
+			</p:submenu>
+			<p:submenu label="Cliente" icon=".ui-icon-person">
+				<p:menuitem value="cadastrar" url="cadastrarCliente.jsf" />
+				<p:menuitem value="editar Cliente" url="manterCliente.jsf" />
 			</p:submenu>
 		</p:menubar>
 	</h:form>
@@ -73,7 +73,6 @@
 						<p:commandButton value="Limpar" type="reset" />
 
 					</h:panelGrid>
-
 				</p:panel>
 				<h1>Mal Desenvolvimento de sistemas</h1>
 			</h:form>

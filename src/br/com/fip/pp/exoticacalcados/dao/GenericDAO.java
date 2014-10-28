@@ -3,8 +3,6 @@ package br.com.fip.pp.exoticacalcados.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.Criteria;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
