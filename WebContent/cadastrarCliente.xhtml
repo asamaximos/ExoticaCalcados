@@ -25,153 +25,152 @@
 	<h:form>
 
 		<p:growl id="growl" sticky="true" showDetail="true" />
+		<p:panel>
+			<p:wizard flowListener="#{clienteBean.onFlowProcess}"
+				backLabel="Voltar" nextLabel="Avançar">
+				<p:tab id="pessoal" title="Pessoal">
+					<p:panel header="Detalhes Pessoais">
+						<p:messages />
+						<h:panelGrid columns="2" columnClasses="label, value">
+							<h:outputText value="Nome: " />
+							<p:inputText value="#{clienteBean.pessoaFisica.pessoa.nome}" required="true" requiredMessage="Informe o Nome" />
+							<h:outputText value="CPF: " />
+							<p:inputMask mask="999.999.999-99"
+								value="#{clienteBean.pessoaFisica.cpf}" validator="cpfValidator" required="true" requiredMessage="Informe o CPF" validatorMessage="CPF Inválido"/>
+							<h:outputText value="Sexo: " />
+							<p:selectOneMenu id="sexo"
+								value="#{clienteBean.pessoaFisica.sexo}">
+								<f:selectItem itemLabel=" " itemValue="" />
+								<f:selectItem itemLabel="M" itemValue="M" />
+								<f:selectItem itemLabel="F" itemValue="F" />
+							</p:selectOneMenu>
+							<h:outputText value="Idade" />
+							<p:inputText value="#{clienteBean.pessoaFisica.idade}" valueChangeListener=" "/>
+						</h:panelGrid>
+					</p:panel>
+				</p:tab>
 
-		<p:wizard flowListener="#{clienteBean.onFlowProcess}"
-			backLabel="Voltar" nextLabel="Avançar">
-			<p:tab id="pessoal" title="Pessoal">
-				<p:panel header="Detalhes Pessoais">
-					<p:messages />
-					<h:panelGrid columns="2" columnClasses="label, value">
-						<h:outputText value="Nome: " />
-						<p:inputText value="#{clienteBean.pessoaFisica.pessoa.nome}" />
-						<h:outputText value="CPF: " />
-						<p:inputMask mask="999.999.999-99"
-							value="#{clienteBean.pessoaFisica.cpf}" validator="cpfValidator" />
-						<h:outputText value="Sexo: " />
-						<p:selectOneMenu id="sexo"
-							value="#{clienteBean.pessoaFisica.sexo}">
-							<f:selectItem itemLabel="Escolha um" itemValue="" />
-							<f:selectItem itemLabel="M" itemValue="M" />
-							<f:selectItem itemLabel="F" itemValue="F" />
-						</p:selectOneMenu>
-						<h:outputText value="Idade" />
-						<p:inputText value="#{clienteBean.pessoaFisica.idade}" />
-					</h:panelGrid>
-				</p:panel>
-			</p:tab>
+				<p:tab id="endereco" title="Endereço">
+					<p:panel header="Detalhes do Endereço">
+						<p:messages />
+						<h:panelGrid columns="2" columnClasses="label, value">
+							<h:outputText value="CEP: " />
+							<p:inputMask mask="99.999-99" value="#{clienteBean.endereco.cep}" />
+							<h:outputText value="Rua: " />
+							<p:inputText value="#{clienteBean.endereco.rua}" />
+							<h:outputText value="Numero: " />
+							<p:inputText value="#{clienteBean.endereco.numero}" />
+							<h:outputText value="Complemento " />
+							<p:inputText value="#{clienteBean.endereco.complemento}" />
+							<h:outputText value="Bairro " />
+							<p:inputText value="#{clienteBean.endereco.bairro}" />
+							<h:outputText value="Cidade " />
+							<p:inputText value="#{clienteBean.endereco.cidade}" />
+							<h:outputText value="Estado: " />
+							<p:selectOneMenu value="#{clienteBean.endereco.estado}"
+								 rendered="true">
+								<f:selectItem itemLabel="AC " itemValue="AC" />
+								<f:selectItem itemLabel="AL " itemValue="AL" />
+								<f:selectItem itemLabel="AP " itemValue="AP" />
+								<f:selectItem itemLabel="AM " itemValue="AM" />
+								<f:selectItem itemLabel="BA " itemValue="BA" />
+								<f:selectItem itemLabel="CE " itemValue="CE" />
+								<f:selectItem itemLabel="DF " itemValue="DF" />
+								<f:selectItem itemLabel="ES " itemValue="ES" />
+								<f:selectItem itemLabel="GO " itemValue="GO" />
+								<f:selectItem itemLabel="MA " itemValue="MA" />
+								<f:selectItem itemLabel="MT " itemValue="MT" />
+								<f:selectItem itemLabel="MS " itemValue="MS" />
+								<f:selectItem itemLabel="MG " itemValue="MG" />
+								<f:selectItem itemLabel="PA " itemValue="PA" />
+								<f:selectItem itemLabel="PB " itemValue="PB" />
+								<f:selectItem itemLabel="PR " itemValue="PR" />
+								<f:selectItem itemLabel="PE " itemValue="PE" />
+								<f:selectItem itemLabel="PI " itemValue="PI" />
+								<f:selectItem itemLabel="RJ " itemValue="RJ" />
+								<f:selectItem itemLabel="RN " itemValue="RN" />
+								<f:selectItem itemLabel="RS " itemValue="RS" />
+								<f:selectItem itemLabel="RO " itemValue="RO" />
+								<f:selectItem itemLabel=" RJ " itemValue="RJ" />
+								<f:selectItem itemLabel=" RR " itemValue="RR" />
+								<f:selectItem itemLabel=" SC " itemValue="SC" />
+								<f:selectItem itemLabel=" SP " itemValue="SP" />
+								<f:selectItem itemLabel=" SE " itemValue="SE" />
+								<f:selectItem itemLabel=" TO " itemValue="TO" />
+							</p:selectOneMenu>
+						</h:panelGrid>
+					</p:panel>
+				</p:tab>
 
-			<p:tab id="endereco" title="Endereço">
-				<p:panel header="Detalhes do Endereço">
-					<p:messages />
-					<h:panelGrid columns="2" columnClasses="label, value">
-						<h:outputText value="CEP: " />
-						<p:inputMask mask="99.999-99" value="#{clienteBean.endereco.cep}" />
-						<h:outputText value="Rua: " />
-						<p:inputText value="#{clienteBean.endereco.rua}" />
-						<h:outputText value="Numero: " />
-						<p:inputText value="#{clienteBean.endereco.numero}" />
-						<h:outputText value="Complemento " />
-						<p:inputText value="#{clienteBean.endereco.complemento}" />
-						<h:outputText value="Bairro " />
-						<p:inputText value="#{clienteBean.endereco.bairro}" />
-						<h:outputText value="Cidade " />
-						<p:inputText value="#{clienteBean.endereco.cidade}" />
-						<h:outputText value="Estado: " />
-						<p:selectOneMenu value="#{clienteBean.endereco.estado}"
-							effect="fade">
-							<f:selectItem itemLabel="AC" itemValue="AC" />
-							<f:selectItem itemLabel="AL" itemValue="AL" />
-							<f:selectItem itemLabel="AP" itemValue="AP" />
-							<f:selectItem itemLabel="AM" itemValue="AM" />
-							<f:selectItem itemLabel="BA" itemValue="BA" />
-							<f:selectItem itemLabel="CE" itemValue="CE" />
-							<f:selectItem itemLabel="DF" itemValue="DF" />
-							<f:selectItem itemLabel="ES" itemValue="ES" />
-							<f:selectItem itemLabel="GO" itemValue="GO" />
-							<f:selectItem itemLabel="MA" itemValue="MA" />
-							<f:selectItem itemLabel="MT" itemValue="MT" />
-							<f:selectItem itemLabel="MS" itemValue="MS" />
-							<f:selectItem itemLabel="MG" itemValue="MG" />
-							<f:selectItem itemLabel="PA" itemValue="PA" />
-							<f:selectItem itemLabel="PB" itemValue="PB" />
-							<f:selectItem itemLabel="PR" itemValue="PR" />
-							<f:selectItem itemLabel="PE" itemValue="PE" />
-							<f:selectItem itemLabel="PI" itemValue="PI" />
-							<f:selectItem itemLabel="RJ" itemValue="RJ" />
-							<f:selectItem itemLabel="RN" itemValue="RN" />
-							<f:selectItem itemLabel="RS" itemValue="RS" />
-							<f:selectItem itemLabel="RO" itemValue="RO" />
-							<f:selectItem itemLabel="RJ" itemValue="RJ" />
-							<f:selectItem itemLabel="RR" itemValue="RR" />
-							<f:selectItem itemLabel="SC" itemValue="SC" />
-							<f:selectItem itemLabel="SP" itemValue="SP" />
-							<f:selectItem itemLabel="SE" itemValue="SE" />
-							<f:selectItem itemLabel="TO" itemValue="TO" />
-						</p:selectOneMenu>
-					</h:panelGrid>
-				</p:panel>
-			</p:tab>
+				<p:tab id="contato" title="Contato">
+					<p:panel header="Informações de Contato">
+						<p:messages />
+						<h:panelGrid columns="2" columnClasses="label, value">
+							<h:outputText value="Telefone: " />
+							<p:inputText value="#{clienteBean.contato.telefone1}" />
+							<h:outputText value="Celular: " />
+							<p:inputText value="#{clienteBean.contato.telefone2}" />
+							<h:outputText value="E-mail: " />
+							<p:inputText value="#{clienteBean.contato.email}" />
+							<h:outputText value="Web Site " />
+							<p:inputText value="#{clienteBean.contato.webSite}" />
+						</h:panelGrid>
+					</p:panel>
+				</p:tab>
 
-			<p:tab id="contato" title="Contato">
-				<p:panel header="Informações de Contato">
-					<p:messages />
-					<h:panelGrid columns="2" columnClasses="label, value">
-						<h:outputText value="Telefone: " />
-						<p:inputText value="#{clienteBean.contato.telefone1}" />
-						<h:outputText value="Celular: " />
-						<p:inputText value="#{clienteBean.contato.telefone2}" />
-						<h:outputText value="E-mail: " />
-						<p:inputText value="#{clienteBean.contato.email}" />
-						<h:outputText value="Web Site " />
-						<p:inputText value="#{clienteBean.contato.webSite}" />
-					</h:panelGrid>
-				</p:panel>
-			</p:tab>
-
-			<p:tab id="confirm" title="Confirmação">
-				<p:panel header="Confirmação">
-					<p:panelGrid columns="3" columnClasses="grid, grid, grid">
-						<p:panel header="Pessoal" rendered="true">
-							<h:panelGrid columns="2" columnClasses="label, value">
-								<h:outputText value="Nome: " />
-								<h:outputText value="#{clienteBean.pessoaFisica.pessoa.nome}" />
-								<h:outputText value="CPF: " />
-								<h:outputText value="#{clienteBean.pessoaFisica.cpf}" />
-								<h:outputText value="Sexo: " />
-								<h:outputText value="#{clienteBean.pessoaFisica.sexo}" />
-								<h:outputText value="Idade" />
-								<h:outputText value="#{clienteBean.pessoaFisica.idade}" />
-							</h:panelGrid>
-						</p:panel>
-						<p:panel header="Endereço">
-							<p:panelGrid columns="2" rendered="true">
-								<h:outputText value="CEP: " />
-								<h:outputText mask="99.999-99"
-									value="#{clienteBean.endereco.cep}" />
-								<h:outputText value="Rua: " />
-								<h:outputText value="#{clienteBean.endereco.rua}" />
-								<h:outputText value="Numero: " />
-								<h:outputText value="#{clienteBean.endereco.numero}" />
-								<h:outputText value="Complemento " />
-								<h:outputText value="#{clienteBean.endereco.complemento}" />
-								<h:outputText value="Bairro " />
-								<h:outputText value="#{clienteBean.endereco.bairro}" />
-								<h:outputText value="Cidade " />
-								<h:outputText value="#{clienteBean.endereco.cidade}" />
-								<h:outputText value="Estado: " />
-								<h:outputText value="#{clienteBean.endereco.estado}" />
-							</p:panelGrid>
-						</p:panel>
-						<p:panel header="Contato" >
-							<p:panelGrid columns="2" rendered="true">
-								<h:outputText value="Telefone: " />
-								<h:outputText value="#{clienteBean.contato.telefone1}" />
-								<h:outputText value="Celular: " />
-								<h:outputText value="#{clienteBean.contato.telefone2}" />
-								<h:outputText value="E-mail: " />
-								<h:outputText value="#{clienteBean.contato.email}" />
-								<h:outputText value="Web Site " />
-								<h:outputText value="#{clienteBean.contato.webSite}" />
-							</p:panelGrid>
-						</p:panel>
-					</p:panelGrid>
-					<p:commandButton value="Cadastrar"
-						actionListener="#{clienteBean.salvar}" update="growl"
-						process="@this" action="cadastrarCliente"/>
-				</p:panel>
-			</p:tab>
-		</p:wizard>
-
+				<p:tab id="confirm" title="Confirmação">
+					<p:panel header="Confirmação">
+						<p:panelGrid columns="1">
+							<p:panel header="Pessoal" rendered="true" >
+								<p:panelGrid columns="2" >
+									<h:outputText value="Nome: " />
+									<h:outputText value="#{clienteBean.pessoaFisica.pessoa.nome}" />
+									<h:outputText value="CPF: " />
+									<h:outputText value="#{clienteBean.pessoaFisica.cpf}" />
+									<h:outputText value="Sexo: " />
+									<h:outputText value="#{clienteBean.pessoaFisica.sexo}" />
+									<h:outputText value="Idade" />
+									<h:outputText value="#{clienteBean.pessoaFisica.idade}" />
+								</p:panelGrid>
+							</p:panel>
+							<p:panel header="Endereço">
+								<p:panelGrid columns="2" rendered="true">
+									<h:outputText value="CEP: " />
+									<h:outputText mask="99.999-99"
+										value="#{clienteBean.endereco.cep}" />
+									<h:outputText value="Rua: " />
+									<h:outputText value="#{clienteBean.endereco.rua}" />
+									<h:outputText value="Numero: " />
+									<h:outputText value="#{clienteBean.endereco.numero}" />
+									<h:outputText value="Complemento " />
+									<h:outputText value="#{clienteBean.endereco.complemento}" />
+									<h:outputText value="Bairro " />
+									<h:outputText value="#{clienteBean.endereco.bairro}" />
+									<h:outputText value="Cidade " />
+									<h:outputText value="#{clienteBean.endereco.cidade}" />
+									<h:outputText value="Estado: " />
+									<h:outputText value="#{clienteBean.endereco.estado}" />
+								</p:panelGrid>
+							</p:panel>
+							<p:panel header="Contato">
+								<p:panelGrid columns="2" rendered="true">
+									<h:outputText value="Telefone: " />
+									<h:outputText value="#{clienteBean.contato.telefone1}" />
+									<h:outputText value="Celular: " />
+									<h:outputText value="#{clienteBean.contato.telefone2}" />
+									<h:outputText value="E-mail: " />
+									<h:outputText value="#{clienteBean.contato.email}" />
+									<h:outputText value="Web Site " />
+									<h:outputText value="#{clienteBean.contato.webSite}" />
+								</p:panelGrid>
+							</p:panel>
+						</p:panelGrid>
+						<p:commandButton value="Cadastrar"
+							actionListener="#{clienteBean.salvar}" action="cadastrarCliente" />
+					</p:panel>
+				</p:tab>
+			</p:wizard>
+		</p:panel>
 	</h:form>
 </h:body>
 </html>
