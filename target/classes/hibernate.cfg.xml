@@ -9,6 +9,8 @@
   <mapping class="br.com.fip.pp.exoticacalcados.entidades.Cliente"/>
    <mapping class="br.com.fip.pp.exoticacalcados.entidades.Produto"/>
    <mapping class="br.com.fip.pp.exoticacalcados.entidades.Funcionario"/>
+   <mapping class="br.com.fip.pp.exoticacalcados.entidades.Endereco"/>
+   <mapping class="br.com.fip.pp.exoticacalcados.entidades.Contato"/>
   
  </session-factory>
 </hibernate-configuration>
