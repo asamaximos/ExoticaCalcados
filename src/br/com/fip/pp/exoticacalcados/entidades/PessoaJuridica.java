@@ -21,15 +21,11 @@ public class PessoaJuridica extends Pessoa {
 	private String inscEstadual;
 	@Column(name="cnpj")
 	private String cnpj;
-	@Column(name="telefone")
-	private String Telefone;
 	@Column(name="nomeFantasia")
 	private String nomeFantasia;
 	@OneToOne
 	@Cascade(CascadeType.ALL)
 	private Pessoa pessoa;
-
-
 
 	/**
 	 * @return the id
@@ -71,20 +67,6 @@ public class PessoaJuridica extends Pessoa {
 	 */
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
-	}
-
-	/**
-	 * @return the telefone
-	 */
-	public String getTelefone() {
-		return Telefone;
-	}
-
-	/**
-	 * @param telefone the telefone to set
-	 */
-	public void setTelefone(String telefone) {
-		Telefone = telefone;
 	}
 
 	/**

@@ -7,7 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 @Table(name = "Pessoa")
 @Entity
@@ -17,66 +21,95 @@ public class Pessoa implements Serializable {
 	private long id;
 	@Column(name = "nome")
 	private String nome;
-	@Column(name = "rua")
-	private String rua;
-	@Column(name = "cidade")
-	private String cidade;
-	@Column(name = "cep")
-	private String cep;
-	@Column(name = "estado")
-	private String estado;
+	@OneToOne
+	@Cascade (CascadeType.ALL)
+	private Endereco endereco;
+	@OneToOne
+	@Cascade (CascadeType.ALL)
+	private Contato contato;
+	
 
 	public Pessoa() {
 	}
 
+
+	/**
+	 * @return the id
+	 */
 	public long getId() {
 		return id;
 	}
 
+
+	/**
+	 * @param id the id to set
+	 */
 	public void setId(long id) {
 		this.id = id;
 	}
 
+
+	/**
+	 * @return the nome
+	 */
 	public String getNome() {
 		return nome;
 	}
 
+
+	/**
+	 * @param nome the nome to set
+	 */
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
-	public String getRua() {
-		return rua;
+
+	/**
+	 * @return the endereco
+	 */
+	public Endereco getEndereco() {
+		return endereco;
 	}
 
-	public void setRua(String rua) {
-		this.rua = rua;
+
+	/**
+	 * @param endereco the endereco to set
+	 */
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 
-	public String getCidade() {
-		return cidade;
+
+	/**
+	 * @return the contato
+	 */
+	public Contato getContato() {
+		return contato;
 	}
 
-	public void setCidade(String cidade) {
-		this.cidade = cidade;
+
+	/**
+	 * @param contato the contato to set
+	 */
+	public void setContato(Contato contato) {
+		this.contato = contato;
 	}
 
-	public String getCep() {
-		return cep;
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Pessoa [id=" + id + ", nome=" + nome + ", endereco=" + endereco
+				+ ", contato=" + contato + "]";
 	}
 
-	public void setCep(String cep) {
-		this.cep = cep;
-	}
 
-	public String getEstado() {
-		return estado;
-	}
-
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
-
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -85,6 +118,10 @@ public class Pessoa implements Serializable {
 		return result;
 	}
 
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -99,11 +136,5 @@ public class Pessoa implements Serializable {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "Pessoa [id=" + id + ", nome=" + nome + ", rua=" + rua
-				+ ", cidade=" + cidade + ", cep=" + cep + ", estado=" + estado
-				+ "]";
-	}
-
+	
 }
