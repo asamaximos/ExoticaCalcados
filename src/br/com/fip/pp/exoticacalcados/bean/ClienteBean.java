@@ -28,7 +28,6 @@ public class ClienteBean implements Serializable {
 	private PessoaFisica pessoaFisica;
 	private Contato contato;
 	private Endereco endereco;
-	private boolean skip;
 
 	public ClienteBean() {
 		clienteBusiness = new ClienteBusiness();
@@ -37,7 +36,6 @@ public class ClienteBean implements Serializable {
 		pessoaFisica.setPessoa(new Pessoa());
 		contato = new Contato();
 		endereco = new Endereco();
-		skip = false;
 	}
 
 	/**
@@ -143,19 +141,6 @@ public class ClienteBean implements Serializable {
         return event.getNewStep();
     }
 
-	/**
-	 * @return the skip
-	 */
-	public boolean isSkip() {
-		return skip;
-	}
-
-	/**
-	 * @param skip the skip to set
-	 */
-	public void setSkip(boolean skip) {
-		this.skip = skip;
-	}
 	
 
 }
