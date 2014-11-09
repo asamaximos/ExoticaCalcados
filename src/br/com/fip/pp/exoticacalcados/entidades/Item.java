@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -26,8 +27,26 @@ public class Item implements Serializable{
 	private int quantidade;
 	@OneToOne
 	@Cascade (CascadeType.ALL)
-	@JoinColumn (name="produto")
+	@JoinColumn (name="idProduto")
 	private Produto produto;
+	@ManyToOne
+	@Cascade (CascadeType.ALL)
+	@JoinColumn (name="idVenda", nullable= false, referencedColumnName = "id")
+	private Vendas venda;
+	
+	
+	/**
+	 * @return the venda
+	 */
+	public Vendas getVenda() {
+		return venda;
+	}
+	/**
+	 * @param venda the venda to set
+	 */
+	public void setVenda(Vendas venda) {
+		this.venda = venda;
+	}
 	/**
 	 * @return the id
 	 */

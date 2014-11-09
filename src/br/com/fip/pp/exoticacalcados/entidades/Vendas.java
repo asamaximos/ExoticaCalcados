@@ -33,10 +33,9 @@ public class Vendas implements Serializable {
 	private FormaDePagamento pagamento;
 	@OneToMany
 	@Cascade(CascadeType.ALL)
-	@JoinColumn(name = "idItens")
 	private List<Item> listaItem;
-	@Column(name = "total")
-	private double total;
+	@Column(name = "totalVenda")
+	private double totalVenda;
 	
 	
 	/**
@@ -92,19 +91,19 @@ public class Vendas implements Serializable {
 	 * @return the total
 	 */
 	public double getTotal() {
-		return total;
+		return totalVenda;
 	}
 	/**
-	 * @param total the total to set
+	 * @param totalVenda the total to set
 	 */
 	public void setTotal() {
 		for (Item item : listaItem) {
-			this.total += (item.getProduto().getValorDeVenda()*item.getQuantidade());
+			this.totalVenda += (item.getProduto().getValorDeVenda()*item.getQuantidade());
 		}
-		
 		
 	}
 	
 	
 
 }
+
