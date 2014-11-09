@@ -1,49 +1,108 @@
 package br.com.fip.pp.exoticacalcados.entidades;
 
 import java.io.Serializable;
+import java.util.List;
 
-public class Vendas implements Serializable{
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
+@Entity
+@Table(name = "Venda")
+public class Vendas implements Serializable {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	private Cliente pessoa;
+	@OneToOne
+	@Cascade(CascadeType.ALL)
+	@JoinColumn(name = "idCliente")
+	private Cliente cliente;
+	@OneToOne
+	@Cascade(CascadeType.ALL)
+	@JoinColumn(name = "idFormaPagamento")
 	private FormaDePagamento pagamento;
-	private Produto produtos;
-	private int quantidade;
+	@OneToMany
+	@Cascade(CascadeType.ALL)
+	@JoinColumn(name = "idItens")
+	private List<Item> listaItem;
+	@Column(name = "total")
 	private double total;
-	private long getId() {
+	
+	
+	/**
+	 * @return the id
+	 */
+	public long getId() {
 		return id;
 	}
-	private void setId(long id) {
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(long id) {
 		this.id = id;
 	}
-	private Cliente getPessoa() {
-		return pessoa;
+	/**
+	 * @return the cliente
+	 */
+	public Cliente getCliente() {
+		return cliente;
 	}
-	private void setPessoa(Cliente pessoa) {
-		this.pessoa = pessoa;
+	/**
+	 * @param cliente the cliente to set
+	 */
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
-	private FormaDePagamento getPagamento() {
+	/**
+	 * @return the pagamento
+	 */
+	public FormaDePagamento getPagamento() {
 		return pagamento;
 	}
-	private void setPagamento(FormaDePagamento pagamento) {
+	/**
+	 * @param pagamento the pagamento to set
+	 */
+	public void setPagamento(FormaDePagamento pagamento) {
 		this.pagamento = pagamento;
 	}
-	private Produto getProdutos() {
-		return produtos;
+
+	/**
+	 * @return the listaItem
+	 */
+	public List<Item> getListaItem() {
+		return listaItem;
 	}
-	private void setProdutos(Produto produtos) {
-		this.produtos = produtos;
+	/**
+	 * @param listaItem the listaItem to set
+	 */
+	public void setListaItem(List<Item> listaItem) {
+		this.listaItem = listaItem;
 	}
-	private int getQuantidade() {
-		return quantidade;
-	}
-	private void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
-	}
-	private double getTotal() {
+	/**
+	 * @return the total
+	 */
+	public double getTotal() {
 		return total;
 	}
-	private void setTotal(double total) {
-		this.total = total;
+	/**
+	 * @param total the total to set
+	 */
+	public void setTotal() {
+		for (Item item : listaItem) {
+			this.total += (item.getProduto().getValorDeVenda()*item.getQuantidade());
+		}
+		
+		
 	}
 	
 	
