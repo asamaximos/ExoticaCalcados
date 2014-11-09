@@ -10,19 +10,8 @@
 <h:head></h:head>
 
 <h:body>
-	<h:form>
-		<p:menubar>
-			<p:submenu label="Funcionario" icon=".ui-icon-person">
-				<p:menuitem value="Cadastrar" url="cadastrarFuncionario.jsf" />
-				<p:menuitem value="Editar Funcionario" url="manterFuncionario.jsf" />
-			</p:submenu>
-			<p:submenu label="Cliente" icon=".ui-icon-person">
-				<p:menuitem value="cadastrar" url="cadastrarCliente.jsf" />
-				<p:menuitem value="editar Cliente" url="manterCliente.jsf" />
-			</p:submenu>
-		</p:menubar>
-	</h:form>
-	<h:form>
+	<ui:include src="/Template/modeloGeral.xhtml"></ui:include>
+	<h:form id="formGeral">
 
 		<p:growl id="growl" sticky="true" showDetail="true" />
 		<p:panel>
@@ -33,10 +22,13 @@
 						<p:messages />
 						<h:panelGrid columns="2" columnClasses="label, value">
 							<h:outputText value="Nome: " />
-							<p:inputText value="#{clienteBean.pessoaFisica.pessoa.nome}" required="true" requiredMessage="Informe o Nome" />
+							<p:inputText value="#{clienteBean.pessoaFisica.pessoa.nome}"
+								required="true" requiredMessage="Informe o Nome" />
 							<h:outputText value="CPF: " />
 							<p:inputMask mask="999.999.999-99"
-								value="#{clienteBean.pessoaFisica.cpf}" validator="cpfValidator" required="true" requiredMessage="Informe o CPF" validatorMessage="CPF Inválido"/>
+								value="#{clienteBean.pessoaFisica.cpf}" validator="cpfValidator"
+								required="true" requiredMessage="Informe o CPF"
+								validatorMessage="CPF Inválido" />
 							<h:outputText value="Sexo: " />
 							<p:selectOneMenu id="sexo"
 								value="#{clienteBean.pessoaFisica.sexo}">
@@ -45,7 +37,8 @@
 								<f:selectItem itemLabel="F" itemValue="F" />
 							</p:selectOneMenu>
 							<h:outputText value="Idade" />
-							<p:inputText value="#{clienteBean.pessoaFisica.idade}" valueChangeListener=" "/>
+							<p:inputText value="#{clienteBean.pessoaFisica.idade}"
+								valueChangeListener=" " />
 						</h:panelGrid>
 					</p:panel>
 				</p:tab>
@@ -55,20 +48,20 @@
 						<p:messages />
 						<h:panelGrid columns="2" columnClasses="label, value">
 							<h:outputText value="CEP: " />
-							<p:inputMask mask="99.999-99" value="#{clienteBean.endereco.cep}" />
+							<p:inputMask mask="99.999-99" required="true" requiredMessage="Iforme o CEP" value="#{clienteBean.endereco.cep}" />
 							<h:outputText value="Rua: " />
-							<p:inputText value="#{clienteBean.endereco.rua}" />
+							<p:inputText required="true" requiredMessage="Informe a Rua" value="#{clienteBean.endereco.rua}" />
 							<h:outputText value="Numero: " />
 							<p:inputText value="#{clienteBean.endereco.numero}" />
 							<h:outputText value="Complemento " />
 							<p:inputText value="#{clienteBean.endereco.complemento}" />
 							<h:outputText value="Bairro " />
-							<p:inputText value="#{clienteBean.endereco.bairro}" />
+							<p:inputText required="true" requiredMessage="Informe o Bairro" value="#{clienteBean.endereco.bairro}" />
 							<h:outputText value="Cidade " />
-							<p:inputText value="#{clienteBean.endereco.cidade}" />
+							<p:inputText required="true" requiredMessage="Informe a Cidade" value="#{clienteBean.endereco.cidade}" />
 							<h:outputText value="Estado: " />
 							<p:selectOneMenu value="#{clienteBean.endereco.estado}"
-								 rendered="true">
+								rendered="true">
 								<f:selectItem itemLabel="AC " itemValue="AC" />
 								<f:selectItem itemLabel="AL " itemValue="AL" />
 								<f:selectItem itemLabel="AP " itemValue="AP" />
@@ -121,8 +114,8 @@
 				<p:tab id="confirm" title="Confirmação">
 					<p:panel header="Confirmação">
 						<p:panelGrid columns="1">
-							<p:panel header="Pessoal" rendered="true" >
-								<p:panelGrid columns="2" >
+							<p:panel header="Pessoal" rendered="true">
+								<p:panelGrid columns="2">
 									<h:outputText value="Nome: " />
 									<h:outputText value="#{clienteBean.pessoaFisica.pessoa.nome}" />
 									<h:outputText value="CPF: " />
@@ -166,7 +159,7 @@
 							</p:panel>
 						</p:panelGrid>
 						<p:commandButton value="Cadastrar"
-							actionListener="#{clienteBean.salvar}" action="cadastrarCliente" />
+							actionListener="#{clienteBean.salvar}" action="cadastrarCliente" update="formGeral" />
 					</p:panel>
 				</p:tab>
 			</p:wizard>

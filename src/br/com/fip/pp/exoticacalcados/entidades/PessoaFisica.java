@@ -20,7 +20,7 @@ public class PessoaFisica implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@Column
+	@Column (name = "cpf")
 	private String cpf;
 	@Column(name = "idade")
 	private int idade;

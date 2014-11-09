@@ -10,12 +10,18 @@
 <h:head></h:head>
 
 <h:body>
-	<h:form>
-		<p:dataTable id="dataTable" paginator="true" selection="single"
-			rows="20">
-			
+	<ui:insert name="links">
 
-		</p:dataTable>
-	</h:form>
+		<p:menubar>
+			<p:submenu label="Funcionario" icon=".ui-icon-person">
+				<p:menuitem value="Cadastrar" url="cadastrarFuncionario.jsf" />
+				<p:menuitem value="Editar Funcionario" url="manterFuncionario.jsf" />
+			</p:submenu>
+			<p:submenu label="Cliente" icon=".ui-icon-person">
+				<p:menuitem value="cadastrar" url="cadastrarCliente.jsf" />
+				<p:menuitem value="editar Cliente" url="manterCliente.jsf" />
+			</p:submenu>
+		</p:menubar>
+	</ui:insert>
 </h:body>
 </html>
