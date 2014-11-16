@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<h:body>
+	<ui:include src="/Template/modeloGeral.xhtml" />
+	<h:form id="formGeral">
+
+
+		<p:panel>
+			<h:panelGrid id="panelGrid" columns="2">
+				<h:outputText value="Codigo Do Produto:"  />
+				<p:inputText value="#{produtoBean.produto.codigo}" label="" required="true" requiredMessage="Digite o codigo" />
+				<h:outputText value="Referência Do Produto:" />
+				<p:inputText value="#{produtoBean.produto.referencia}" />
+				<h:outputText value="Marca Do Fabricante:" />
+				<p:inputText value="#{produtoBean.produto.marca}" />
+				<h:outputText value="Quantidade:" />
+				<p:inputText value="#{produtoBean.produto.quantidade}" />
+				<h:outputText value="Descrição do Produto:" />
+				<p:inputTextarea value="#{produtoBean.produto.observação}" />
+				<h:outputText value="Valor de Compra" />
+				<p:inputText value="#{produtoBean.produto.valorDeCompra}" />
+				<h:outputText value="Valor De Venda:" />
+				<p:inputText value="#{produtoBean.produto.valorDeVenda}" />
+				<p:commandButton action="cadastrarProduto.jsf"
+					actionListener="#{produtoBean.salvar}" update="formGeral" />
+			</h:panelGrid>
+		</p:panel>
+
+
+
+	</h:form>
+</h:body>
+</html>

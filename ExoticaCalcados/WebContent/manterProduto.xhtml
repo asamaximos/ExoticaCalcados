@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Exotica Calcados - Pesquisa de Produtos</title>
+</h:head>
+<h:body>
+	<ui:include src="/Template/modeloGeral.xhtml"></ui:include>
+	<h:form id="formGeral">
+		<p:panel id="painelProdutos" header="Gerenciar Produtos">
+			<p:growl id="messages" showDetail="true" />
+			<p:dataTable id="dtProdutos"
+				emptyMessage="Não há Produtos cadastrados" var="produto"
+				value="#{produtoBean.listaProdutos}" rendered="true"
+				paginator="true" rows="20" rowKey="#{produto.id}"
+				selection="#{produtoBean.produto}" selectionMode="single">
+
+
+				<p:column headerText="Código" filterBy="#{produto.codigo}">  
+                    #{produto.codigo} 
+                </p:column>
+
+				<p:column headerText="Referencia" filterBy="#{produto.referencia}">  
+                    #{produto.referencia}  
+                </p:column>
+				<p:column headerText="Marca" filterBy="#{produto.marca}">  
+                    #{produto.marca}  
+                </p:column>
+				<p:column headerText="Descricao">  
+                    #{produto.observação}  
+                </p:column>
+				<p:column headerText="Quantidade">  
+                    #{produto.quantidade}  
+                </p:column>
+				<p:column headerText="Valor de Compra">  
+                    #{produto.valorDeCompra}  
+                </p:column>
+				<p:column headerText="Valor de Venda">  
+                    #{produto.valorDeVenda}  
+                </p:column>
+				<p:column headerText="Valor de Compra">  
+                    #{produto.valorDeCompra}  
+                </p:column>
+                <f:facet name="footer">
+				<p:commandButton id="view" value="Visualizar" icon="ui-icon-search"
+					update=":formView" oncomplete="visualizar.show()">
+
+				</p:commandButton>
+				<p:commandButton id="edit" value="Editar" icon="ui-icon-pencil"
+					update=":formEdit" oncomplete="editarProduto.show()">
+
+				</p:commandButton>
+				<p:commandButton id="remover" value="Remover" icon="ui-icon-trash"
+					update=":formRemove" oncomplete="removerProduto.show()">
+
+				</p:commandButton>
+				</f:facet>
+
+
+			</p:dataTable>
+			<p:outputLabel>MAL desenvolvimento de sistema</p:outputLabel>
+		</p:panel>
+	</h:form>
+
+	<p:dialog widgetVar="editarProduto" modal="true"
+		header="Editar Produto">
+		<h:form id="formEdit">
+
+			<p:growl id="growl" sticky="true" showDetail="true" />
+
+			<h:panelGrid columns="2" cellspacing="15">
+
+				<h:outputText value="Codigo: " />
+				<p:inputText value="#{produtoBean.produto.codigo}" />
+
+				<h:outputText value="Referencia: " />
+				<p:inputText value="#{produtoBean.produto.referencia}" />
+
+				<h:outputText value="Marca: " />
+				<p:inputText value="#{produtoBean.produto.marca}" />
+
+				<h:outputText value="Descrição: " />
+				<p:inputText value="#{produtoBean.produto.observação}" />
+
+				<h:outputText value="Quantidade: " />
+				<p:inputText value="#{produtoBean.produto.quantidade}" />
+
+				<h:outputText value="Valor De Compra: " />
+				<p:inputText value="#{produtoBean.produto.valorDeCompra}" />
+
+				<h:outputText value="Valor de Venda: " />
+				<p:inputText value="#{produtoBean.produto.valorDeVenda}" />
+
+
+				<p:commandButton actionListener="#{produtoBean.alterar}"
+					oncomplete="editarProduto.hide()" value="Salvar Alterações"
+					icon="ui-icon-circle-check" update=":formGeral" />
+			</h:panelGrid>
+
+		</h:form>
+	</p:dialog>
+
+	<p:dialog widgetVar="removerProduto" modal="true"
+		header="Remover Produto">
+		<h:form id="formRemove">
+
+			<p:growl id="growl" sticky="true" showDetail="true" />
+
+			<h:panelGrid columns="2" cellspacing="15">
+
+				<h:outputText value="Codigo: " />
+				<p:inputText value="#{produtoBean.produto.codigo}" />
+
+				<h:outputText value="Referencia: " />
+				<p:inputText value="#{produtoBean.produto.referencia}" />
+
+				<h:outputText value="Marca: " />
+				<p:inputText value="#{produtoBean.produto.marca}" />
+
+				<h:outputText value="Descrição: " />
+				<p:inputText value="#{produtoBean.produto.observação}" />
+
+				<h:outputText value="Quantidade: " />
+				<p:inputText value="#{produtoBean.produto.quantidade}" />
+
+				<h:outputText value="Valor De Compra: " />
+				<p:inputText value="#{produtoBean.produto.valorDeCompra}" />
+
+				<h:outputText value="Valor de Venda: " />
+				<p:inputText value="#{produtoBean.produto.valorDeVenda}" />
+
+
+				<p:commandButton actionListener="#{produtoBean.deletar}"
+					update=":formGeral" oncomplete="removerProduto.hide()"
+					value="Remover" icon="ui-icon-trash" />
+				<p:commandButton oncomplete="removerProduto.hide()" value="Cancelar"
+					icon="ui-icon-cancel" />
+			</h:panelGrid>
+
+		</h:form>
+	</p:dialog>
+
+
+	<p:dialog widgetVar="visualizar" modal="true"
+		header="Visualizar Produto">
+		<h:form id="formView">
+
+			<p:growl id="growl" sticky="true" showDetail="true" />
+
+			<h:panelGrid columns="2" cellspacing="15">
+				<h:outputText value="Codigo: " />
+				<h:outputText value="#{produtoBean.produto.codigo}" />
+
+				<h:outputText value="Referencia: " />
+				<h:outputText value="#{produtoBean.produto.referencia}" />
+
+				<h:outputText value="Marca: " />
+				<h:outputText value="#{produtoBean.produto.marca}" />
+
+				<h:outputText value="Descrição: " />
+				<h:outputText value="#{produtoBean.produto.observação}" />
+
+				<h:outputText value="Quantidade: " />
+				<h:outputText value="#{produtoBean.produto.quantidade}" />
+
+				<h:outputText value="Valor De Compra: " />
+				<h:outputText value="#{produtoBean.produto.valorDeCompra}" />
+
+				<h:outputText value="Valor de Venda: " />
+				<h:outputText value="#{produtoBean.produto.valorDeVenda}" />
+
+
+				<p:commandButton update=":formView" oncomplete="visualizar.hide()"
+					value="Fechar" icon="ui-icon-closethick" />
+			</h:panelGrid>
+
+		</h:form>
+	</p:dialog>
+</h:body>
+</html>
+

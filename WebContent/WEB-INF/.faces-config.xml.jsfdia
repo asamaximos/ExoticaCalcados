@@ -1,2 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PROCESS model-entity="JSFProcess"/>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#principalAdministrador.xhtml"
+  PATH="/principalAdministrador.xhtml" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#principalAdministrador.xhtml:0" NAME="item"
+   PATH="/principalAdministrador.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="principalAdministrador::#principal.xhtml"
+    NAME="output" PATH="/principal.xhtml"
+    TARGET="rules:#principal.xhtml" TITLE="principalAdministrador" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#login.xhtml" PATH="/login.xhtml"
+  SHAPE="32,129,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#login.xhtml:0" NAME="item"
+   PATH="/login.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#principal.xhtml" PATH="/principal.xhtml"
+  SHAPE="240,33,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>
