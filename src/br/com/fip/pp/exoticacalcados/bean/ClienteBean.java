@@ -6,7 +6,6 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-
 import org.primefaces.event.FlowEvent;
 
 import br.com.fip.pp.exoticacalcados.business.ClienteBusiness;
@@ -16,6 +15,12 @@ import br.com.fip.pp.exoticacalcados.entidades.Endereco;
 import br.com.fip.pp.exoticacalcados.entidades.Pessoa;
 import br.com.fip.pp.exoticacalcados.entidades.PessoaFisica;
 
+/**
+ * 
+ * Classe de controle de Clientes para a interface gráfica.
+ * 
+ * @author Michel
+ */
 @ManagedBean
 @ViewScoped
 public class ClienteBean implements Serializable {
@@ -27,20 +32,23 @@ public class ClienteBean implements Serializable {
 	private Contato contato;
 	private Endereco endereco;
 
+	/**
+	 * O construtor da classe ClienteBean
+	 */
 	public ClienteBean() {
 		clienteBusiness = new ClienteBusiness();
 		cliente = new Cliente();
-		pessoaFisica = new PessoaFisica();
-		pessoaFisica.setPessoa(new Pessoa());
 		contato = new Contato();
 		endereco = new Endereco();
+		pessoaFisica = new PessoaFisica();
+		pessoaFisica.setPessoa(new Pessoa());
 	}
 
 	/**
-	 * @param Salva
-	 *            o cliente no banco
+	 * Método utilizado para salvar um Cliente
+	 * 
+	 * @see ClienteBusiness#salvar(Cliente)
 	 */
-
 	public void salvar() {
 		pessoaFisica.getPessoa().setContato(contato);
 		pessoaFisica.getPessoa().setEndereco(endereco);
@@ -49,96 +57,105 @@ public class ClienteBean implements Serializable {
 	}
 
 	/**
-	 * @param Altera
-	 *            o cliente no banco
+	 * Método utilizado para alterar um Cliente
+	 * 
+	 * @see ClienteBusiness#alterar(Cliente)
 	 */
-
 	public void alterar() {
 		clienteBusiness.alterar(cliente);
 	}
 
 	/**
-	 * @param Remove
-	 *            o cliente do banco
+	 * Método utilizado para deletar um Cliente
+	 * 
+	 * @see ClienteBusiness#deletar(Cliente)
 	 */
-
 	public void deletar() {
 		clienteBusiness.deletar(cliente);
 	}
 
 	/**
-	 * @param Busca
-	 *            os clientes do banco
-	 * @return Lista de clientes do banco
+	 * Método utilizado para listar Clientes
+	 * 
+	 * @return listaClientes
+	 * @see ClienteBusiness#salvar(Cliente)
 	 */
-
 	public List<Cliente> getListaClientes() {
 		this.listaClientes = clienteBusiness.listar();
 		return listaClientes;
 	}
 
 	/**
-	 * @return the cliente
+	 * Método ultilizado para capturar um cliente
+	 * @return um cliente
 	 */
 	public Cliente getCliente() {
 		return cliente;
 	}
 
 	/**
+	 * Define um cliente para a variável
+	 * 
 	 * @param cliente
-	 *            the cliente to set
 	 */
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
 
 	/**
-	 * @return the pessoaFisica
+	 * Método ultilizado para capturar uma pessoaFisica
+	 * @return uma pessoaFisica
 	 */
 	public PessoaFisica getPessoaFisica() {
 		return pessoaFisica;
 	}
 
 	/**
-	 * @param pessoaFisica the pessoaFisica to set
+	 * Define uma pessoaFisica para a variável
+	 * 
+	 * @param pessoaFisica
 	 */
 	public void setPessoaFisica(PessoaFisica pessoaFisica) {
 		this.pessoaFisica = pessoaFisica;
 	}
 
 	/**
-	 * @return the contato
+	 * Método ultilizado para capturar um contato
+	 * @return um contato
 	 */
 	public Contato getContato() {
 		return contato;
 	}
 
 	/**
-	 * @param contato the contato to set
+	 * Define um contato para a variável
+	 * 
+	 * @param contato
 	 */
 	public void setContato(Contato contato) {
 		this.contato = contato;
 	}
 
 	/**
-	 * @return the endereco
+	 * Método ultilizado para capturar um endereço
+	 * @return um endereco
 	 */
 	public Endereco getEndereco() {
 		return endereco;
 	}
 
 	/**
-	 * @param endereco the endereco to set
+	 * Define um endereço para a variável
+	 * 
+	 * @param endereco
 	 */
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
 
 	public String onFlowProcess(FlowEvent event) {
-		
-        return event.getNewStep();
-    }
 
-	
+		return event.getNewStep();
+	}
 
 }

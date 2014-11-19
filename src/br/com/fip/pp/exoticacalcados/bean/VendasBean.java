@@ -11,7 +11,12 @@ import br.com.fip.pp.exoticacalcados.entidades.Cliente;
 import br.com.fip.pp.exoticacalcados.entidades.Item;
 import br.com.fip.pp.exoticacalcados.entidades.Produto;
 import br.com.fip.pp.exoticacalcados.entidades.Vendas;
-
+/**
+ * 
+ * Classe de controle de Vendas para a interface gráfica.
+ * 
+ * @author Michel
+ */
 @ManagedBean
 @ViewScoped
 public class VendasBean implements Serializable{
@@ -30,14 +35,17 @@ public class VendasBean implements Serializable{
 	
 
 	/**
-	 * @return the listaItens
+	 * Método utilizado para capturar a lista de itens
+	 * @return listaItens
+	 * 
 	 */
 	public List<Item> getListaItens() {
 		return listaItens;
 	}
 
 	/**
-	 * @param listaItens the listaItens to set
+	 * Define os itens para a inserção na lista
+	 * @param listaItens
 	 */
 	public void setListaItens() {
 		this.listaItens.add(item);
@@ -45,42 +53,50 @@ public class VendasBean implements Serializable{
 	
 
 	/**
-	 * @return the cliente
+	 * Método ultilizado para capturar um cliente
+	 * @return um cliente
 	 */
 	public Cliente getCliente() {
 		return cliente;
 	}
-
 	/**
-	 * @param cliente the cliente to set
+	 * Define um cliente para a variável
+	 * 
+	 * @param cliente
 	 */
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
 
 	/**
-	 * @return the produto
+	 * Método ultilizado para capturar um produto
+	 * @return um produto
 	 */
 	public Produto getProduto() {
 		return produto;
 	}
 
 	/**
-	 * @param produto the produto to set
+	 * Define um produto para a variável
+	 * 
+	 * @param produto
 	 */
 	public void setProduto(Produto produto) {
 		this.produto = produto;
 	}
 
 	/**
-	 * @return the item
+	 * Método ultilizado para capturar um item
+	 * @return um item
 	 */
 	public Item getItem() {
 		return item;
 	}
 
 	/**
-	 * @param item the item to set
+	 * Define um item para a variável
+	 * 
+	 * @param item
 	 */
 	public void setItem(Item item) {
 		this.item = item;
