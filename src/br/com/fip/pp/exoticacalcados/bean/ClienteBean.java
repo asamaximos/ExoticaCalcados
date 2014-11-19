@@ -3,9 +3,17 @@ package br.com.fip.pp.exoticacalcados.bean;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 
+
+
+
+
+import javax.faces.context.FacesContext;
 
 import org.primefaces.event.FlowEvent;
 
@@ -15,9 +23,10 @@ import br.com.fip.pp.exoticacalcados.entidades.Contato;
 import br.com.fip.pp.exoticacalcados.entidades.Endereco;
 import br.com.fip.pp.exoticacalcados.entidades.Pessoa;
 import br.com.fip.pp.exoticacalcados.entidades.PessoaFisica;
+import br.com.fip.pp.exoticacalcados.webservice.CepWebService;
 
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class ClienteBean implements Serializable {
 
 	private Cliente cliente;
@@ -138,7 +147,23 @@ public class ClienteBean implements Serializable {
 		
         return event.getNewStep();
     }
-
 	
+	public void CepWebService(){
+		CepWebService cepWeb = new CepWebService(endereco.getCep());
+	if (cepWeb.getResultado() > 0){	
+		
+		this.endereco.setBairro(cepWeb.getBairro());
+		this.endereco.setCidade(cepWeb.getCidade());
+		this.endereco.setEstado(cepWeb.getEstado());
+		this.endereco.setRua(cepWeb.getTipoLogradouro() +" " + cepWeb.getLogradouro());
+	}
+	 else {
+		FacesContext.getCurrentInstance().addMessage(
+				null,
+				new FacesMessage(FacesMessage.SEVERITY_ERROR,
+						"Servidor não está respondendo",
+						"Servidor não está respondendo"));
 
+	}
+	}
 }

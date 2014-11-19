@@ -3,9 +3,7 @@
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/testes"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/testes"/>
-        <property name="context-root" value="Teste"/>
         <property name="java-output-path" value="/Teste/build/classes"/>
+        <property name="context-root" value="ExoticaCalcados"/>
     </wb-module>
 </project-modules>
