@@ -3,7 +3,10 @@ package br.com.fip.pp.exoticacalcados.bean;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 
 import org.primefaces.event.FlowEvent;
@@ -22,7 +25,7 @@ import br.com.fip.pp.exoticacalcados.entidades.PessoaFisica;
  * @author Michel
  */
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class ClienteBean implements Serializable {
 
 	private Cliente cliente;
@@ -158,4 +161,5 @@ public class ClienteBean implements Serializable {
 		return event.getNewStep();
 	}
 
+	
 }
