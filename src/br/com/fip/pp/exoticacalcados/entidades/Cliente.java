@@ -18,7 +18,7 @@ public class Cliente implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	private double debito;
+	private Double debito;
 	@OneToOne
 	@Cascade(CascadeType.ALL)
 	private PessoaFisica pessoaFisica;

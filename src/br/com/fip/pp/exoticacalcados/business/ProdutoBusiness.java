@@ -7,11 +7,14 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import br.com.fip.pp.exoticacalcados.dao.ClienteDao;
 import br.com.fip.pp.exoticacalcados.dao.ProdutoDao;
+import br.com.fip.pp.exoticacalcados.entidades.Cliente;
 import br.com.fip.pp.exoticacalcados.entidades.Produto;
 import br.com.fip.pp.exoticacalcados.repositorio.Repositorio;
 
 /**
+
  * Classe Reponsavel
  * 
  * @author LuizNeto
@@ -25,16 +28,27 @@ public class ProdutoBusiness implements Serializable, Repositorio<Produto> {
 			.getLogger(ProdutoBusiness.class);
 	private static final Logger LOGGER_PADRAO = LogManager.getRootLogger();
 
+	/**
+	 * Construtor da classe ProdutoBusiness
+	 */
 	public ProdutoBusiness() {
 		produtoDao = new ProdutoDao();
 	}
 
 	/**
+
 	 * metodo reponsavel por salvar um objeto do tipo Produto
 	 */
 	@Override
 	public void salvar(Produto produto) {
 		produtoDao.openSession();
+		/**
+	 * Método responsável pela chamada do método salvar da camada DAO
+	 * 
+	 * @see ProdutoDao#salvar(Produto)
+	 */
+	public void salvar(Produto objeto) {
+
 		produtoDao.salvar(produto);
 		produtoDao.closedSession();
 		LOGGER.debug("Produto a ser Salvo " + produto.getCodigo());
@@ -60,7 +74,14 @@ public class ProdutoBusiness implements Serializable, Repositorio<Produto> {
 
 	/**
 	 * metodo reponsavel por deletar um objeto do tipo Produto
+	 *
+	 * 
+	 * @see ProdutoDao#alterar(Produto)
 	 */
+	public void alterar(Produto objeto) {
+		produtoDao.salvar(produto);
+
+	}
 
 	@Override
 	public void deletar(Produto produto) {
@@ -72,9 +93,22 @@ public class ProdutoBusiness implements Serializable, Repositorio<Produto> {
 		LOGGER.info("Excluido Com Sucesso");
 		LOGGER_PADRAO.info("Produto Excluido com sucesso");
 
+	/**
+	 * Método responsável pela chamada do método deletar da camada DAO
+	 * 
+	 * @see ProdutoDao#deletar(Produto)
+	 */
+	public void deletar(Produto objeto) {
+		produtoDao.deletar(objeto);
+
+
 	}
 
-	@Override
+	/**
+	 * Método responsável pela chamada do método listar da camada DAO
+	 * 
+	 * @see ProdutoDao#listar()
+	 */
 	public List<Produto> listar() {
 		produtoDao.openSession();
 		listaProduto = produtoDao.listar();

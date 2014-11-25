@@ -10,9 +10,12 @@ import org.apache.logging.log4j.Logger;
 import br.com.fip.pp.exoticacalcados.dao.ClienteDao;
 import br.com.fip.pp.exoticacalcados.entidades.Cliente;
 import br.com.fip.pp.exoticacalcados.repositorio.Repositorio;
+
+
 /**
- * Classe de lógica de negócio do Cliente
- * @author LUIZCARLOS
+ * Classe responsável pelas chamadas dos métodos da classe ClienteDao
+ * 
+ * @author Michel
  *
  */
 public class ClienteBusiness implements Serializable, Repositorio<Cliente> {
@@ -22,11 +25,18 @@ public class ClienteBusiness implements Serializable, Repositorio<Cliente> {
 	private static Logger LOGGER_PADRAO = LogManager.getRootLogger();
 
 
+	/**
+	 * Construtor da classe ClienteBusiness
+	 */
 	public ClienteBusiness() {
 		clienteDao = new ClienteDao();
 	}
 
-	@Override
+	/**
+	 * Método responsável pela chamada do método salvar da camada DAO
+	 * 
+	 * @see ClienteDao#salvar(Cliente)
+	 */
 	public void salvar(Cliente cliente) {
 		clienteDao.openSession();
 		clienteDao.salvar(cliente);
@@ -36,7 +46,11 @@ public class ClienteBusiness implements Serializable, Repositorio<Cliente> {
 		LOGGER_PADRAO.info("Cliente cadastrado com sucesso");
 	}
 
-	@Override
+	/**
+	 * Método responsável pela chamada do método alterar da camada DAO
+	 * 
+	 * @see ClienteDao#alterar(Cliente)
+	 */
 	public void alterar(Cliente cliente) {
 		clienteDao.openSession();
 		clienteDao.alterar(cliente);
@@ -46,7 +60,11 @@ public class ClienteBusiness implements Serializable, Repositorio<Cliente> {
 		LOGGER_PADRAO.info("Cliente alterado com sucesso");
 	}
 
-	@Override
+	/**
+	 * Método responsável pela chamada do método deletar da camada DAO
+	 * 
+	 * @see ClienteDao#deletar(Cliente)
+	 */
 	public void deletar(Cliente cliente) {
 		clienteDao.openSession();
 		clienteDao.deletar(cliente);
@@ -56,7 +74,11 @@ public class ClienteBusiness implements Serializable, Repositorio<Cliente> {
 		LOGGER_PADRAO.info("Cliente cadastrado com sucesso");
 	}
 
-	@Override
+	/**
+	 * Método responsável pela chamada do método listar da camada DAO
+	 * 
+	 * @see ClienteDao#listar()
+	 */
 	public List<Cliente> listar() {
 		clienteDao.openSession();
 		listaClientes = clienteDao.listar();

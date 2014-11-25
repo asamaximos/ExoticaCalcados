@@ -47,51 +47,27 @@
 				<p:tab id="endereco" title="Endereço">
 					<p:panel header="Detalhes do Endereço">
 						<p:messages />
-						<h:panelGrid columns="2" columnClasses="label, value">
+						<h:panelGrid columns="3">
 							<h:outputText value="CEP: " />
 							<p:inputMask mask="99.999-99" required="true" requiredMessage="Informe o CEP" value="#{clienteBean.endereco.cep}" />
 							<h:outputText value="Rua: " />
-							<p:inputText required="true" requiredMessage="Informe a Rua" value="#{clienteBean.endereco.rua}" />
+							<p:inputText id="rua" required="true" requiredMessage="Informe a Rua" value="#{clienteBean.endereco.rua}"/>
+							<h:outputText/>
 							<h:outputText value="Numero: " />
-							<p:inputText value="#{clienteBean.endereco.numero}" />
+							<p:inputText id="num" value="#{clienteBean.endereco.numero}"/>
+							<h:outputText/>
 							<h:outputText value="Complemento " />
-							<p:inputText value="#{clienteBean.endereco.complemento}" />
-							<h:outputText value="Bairro " />
-							<p:inputText required="true" requiredMessage="Informe o Bairro" value="#{clienteBean.endereco.bairro}" />
+							<p:inputText id="complemento" value="#{clienteBean.endereco.complemento}"/>
+							<h:outputText/>
+							<h:outputText  value="Bairro " />
+							<p:inputText id="bairro" required="true" requiredMessage="Informe o Bairro" value="#{clienteBean.endereco.bairro}"/>
+							<h:outputText/>
 							<h:outputText value="Cidade " />
-							<p:inputText required="true" requiredMessage="Informe a Cidade" value="#{clienteBean.endereco.cidade}" />
+							<p:inputText id="cidade" required="true" requiredMessage="Informe a Cidade" value="#{clienteBean.endereco.cidade}"/>
+							<h:outputText/>
 							<h:outputText value="Estado: " />
-							<p:selectOneMenu value="#{clienteBean.endereco.estado}"
-								rendered="true">
-								<f:selectItem itemLabel="AC " itemValue="AC" />
-								<f:selectItem itemLabel="AL " itemValue="AL" />
-								<f:selectItem itemLabel="AP " itemValue="AP" />
-								<f:selectItem itemLabel="AM " itemValue="AM" />
-								<f:selectItem itemLabel="BA " itemValue="BA" />
-								<f:selectItem itemLabel="CE " itemValue="CE" />
-								<f:selectItem itemLabel="DF " itemValue="DF" />
-								<f:selectItem itemLabel="ES " itemValue="ES" />
-								<f:selectItem itemLabel="GO " itemValue="GO" />
-								<f:selectItem itemLabel="MA " itemValue="MA" />
-								<f:selectItem itemLabel="MT " itemValue="MT" />
-								<f:selectItem itemLabel="MS " itemValue="MS" />
-								<f:selectItem itemLabel="MG " itemValue="MG" />
-								<f:selectItem itemLabel="PA " itemValue="PA" />
-								<f:selectItem itemLabel="PB " itemValue="PB" />
-								<f:selectItem itemLabel="PR " itemValue="PR" />
-								<f:selectItem itemLabel="PE " itemValue="PE" />
-								<f:selectItem itemLabel="PI " itemValue="PI" />
-								<f:selectItem itemLabel="RJ " itemValue="RJ" />
-								<f:selectItem itemLabel="RN " itemValue="RN" />
-								<f:selectItem itemLabel="RS " itemValue="RS" />
-								<f:selectItem itemLabel="RO " itemValue="RO" />
-								<f:selectItem itemLabel=" RJ " itemValue="RJ" />
-								<f:selectItem itemLabel=" RR " itemValue="RR" />
-								<f:selectItem itemLabel=" SC " itemValue="SC" />
-								<f:selectItem itemLabel=" SP " itemValue="SP" />
-								<f:selectItem itemLabel=" SE " itemValue="SE" />
-								<f:selectItem itemLabel=" TO " itemValue="TO" />
-							</p:selectOneMenu>
+							<p:inputText id="uf" value="#{clienteBean.endereco.estado}" size="2"/>
+							<h:outputText/>
 						</h:panelGrid>
 					</p:panel>
 				</p:tab>
@@ -130,8 +106,7 @@
 							<p:panel header="Endereço">
 								<p:panelGrid columns="2" rendered="true">
 									<h:outputText value="CEP: " />
-									<h:outputText mask="99.999-99"
-										value="#{clienteBean.endereco.cep}" />
+									<h:outputText value="#{clienteBean.endereco.cep}" />
 									<h:outputText value="Rua: " />
 									<h:outputText value="#{clienteBean.endereco.rua}" />
 									<h:outputText value="Numero: " />

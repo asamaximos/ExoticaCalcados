@@ -4,13 +4,24 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+<<<<<<< HEAD
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+=======
+import br.com.fip.pp.exoticacalcados.dao.ClienteDao;
+>>>>>>> branch 'master' of git@github.com:asamaximos/ExoticaCalcados.git
 import br.com.fip.pp.exoticacalcados.dao.FuncionarioDao;
+import br.com.fip.pp.exoticacalcados.entidades.Cliente;
 import br.com.fip.pp.exoticacalcados.entidades.Funcionario;
 import br.com.fip.pp.exoticacalcados.repositorio.Repositorio;
 
+/**
+ * Classe responsável pelas chamadas dos métodos da classe FuncionarioDao
+ * 
+ * @author Michel
+ *
+ */
 public class FuncionarioBusiness implements Serializable,
 		Repositorio<Funcionario> {
 	private FuncionarioDao FuncionarioDao;
@@ -19,11 +30,18 @@ public class FuncionarioBusiness implements Serializable,
 			.getLogger(FuncionarioBusiness.class);
 	private static final Logger LOGGER_PADRAO = LogManager.getRootLogger();
 
+	/**
+	 * Construtor da classe FuncionarioBusiness
+	 */
 	public FuncionarioBusiness() {
 		FuncionarioDao = new FuncionarioDao();
 	}
 
-	@Override
+	/**
+	 * Método responsável pela chamada do método salvar da camada DAO
+	 * 
+	 * @see FuncionarioDao#salvar(Funcionario)
+	 */
 	public void salvar(Funcionario objeto) {
 		FuncionarioDao.openSession();
 		FuncionarioDao.salvar(objeto);
@@ -34,7 +52,11 @@ public class FuncionarioBusiness implements Serializable,
 
 	}
 
-	@Override
+	/**
+	 * Método responsável pela chamada do método alterar da camada DAO
+	 * 
+	 * @see FuncionarioDao#alterar(Funcionario)
+	 */
 	public void alterar(Funcionario objeto) {
 		FuncionarioDao.openSession();
 		FuncionarioDao.alterar(objeto);
@@ -44,7 +66,11 @@ public class FuncionarioBusiness implements Serializable,
 		LOGGER_PADRAO.info("Funcionario Alterado com sucesso");
 	}
 
-	@Override
+	/**
+	 * Método responsável pela chamada do método deletar da camada DAO
+	 * 
+	 * @see FuncionarioDao#deletar(Funcionario)
+	 */
 	public void deletar(Funcionario objeto) {
 		FuncionarioDao.openSession();
 		FuncionarioDao.deletar(objeto);
@@ -54,7 +80,11 @@ public class FuncionarioBusiness implements Serializable,
 		LOGGER_PADRAO.info("Funcionario Alterado com sucesso");
 	}
 
-	@Override
+	/**
+	 * Método responsável pela chamada do método listar da camada DAO
+	 * 
+	 * @see FuncionarioDao#listar()
+	 */
 	public List<Funcionario> listar() {
 		FuncionarioDao.openSession();
 		listaFuncionarios = FuncionarioDao.listar();

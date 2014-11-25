@@ -122,10 +122,12 @@
 							<p:inputText value="#{funcionarioBean.funcionario.cargo}"
 								required="true" requiredMessage="Informe o Cargo" />
 							<h:outputText value="Salário: " />
-							<p:inputText value="#{funcionarioBean.funcionario.salario}"
+
+							<p:inputText label="" value="#{funcionarioBean.funcionario.salario}"
 								required="true" requiredMessage="Informe o Salário" />
 							<h:outputText value="Data de admissão: " />
-							<p:inputText value="#{funcionarioBean.funcionario.dataAdmissao}" />
+							<p:calendar value="#{funcionarioBean.funcionario.dataAdmissao}" navigator="true" pattern="dd/MM/yyyy"/>
+
 						</h:panelGrid>
 					</p:panel>
 				</p:tab>
