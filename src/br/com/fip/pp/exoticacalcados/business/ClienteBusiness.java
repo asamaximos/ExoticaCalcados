@@ -10,7 +10,11 @@ import org.apache.logging.log4j.Logger;
 import br.com.fip.pp.exoticacalcados.dao.ClienteDao;
 import br.com.fip.pp.exoticacalcados.entidades.Cliente;
 import br.com.fip.pp.exoticacalcados.repositorio.Repositorio;
-
+/**
+ * Classe de lógica de negócio do Cliente
+ * @author LUIZCARLOS
+ *
+ */
 public class ClienteBusiness implements Serializable, Repositorio<Cliente> {
 	private ClienteDao clienteDao;
 	private List<Cliente> listaClientes = new ArrayList<Cliente>();

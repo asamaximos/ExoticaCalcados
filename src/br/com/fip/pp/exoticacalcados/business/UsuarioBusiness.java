@@ -34,13 +34,16 @@ public class UsuarioBusiness implements Serializable, Repositorio<Usuario> {
 
 	@Override
 	public void alterar(Usuario usuario) {
-		// usuarioDao.alterar(usuario);
-
+		usuarioDao.openSession();
+		usuarioDao.alterar(usuario);
+		usuarioDao.alterar(usuario);
 	}
 
 	@Override
 	public void deletar(Usuario usuario) {
-		// usuarioDao.deletar(usuario);
+		usuarioDao.openSession();
+		usuarioDao.deletar(usuario);
+		usuarioDao.deletar(usuario);
 	}
 
 	@Override

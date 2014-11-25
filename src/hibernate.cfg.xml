@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
                                          "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
- <session-factory name="">
+ <session-factory >
   <property name="current_session_context_class">thread</property>
   <mapping class="br.com.fip.pp.exoticacalcados.entidades.Pessoa"/>
   <mapping class="br.com.fip.pp.exoticacalcados.entidades.PessoaFisica"/>
@@ -11,6 +11,7 @@
    <mapping class="br.com.fip.pp.exoticacalcados.entidades.Funcionario"/>
    <mapping class="br.com.fip.pp.exoticacalcados.entidades.Endereco"/>
    <mapping class="br.com.fip.pp.exoticacalcados.entidades.Contato"/>
+   <mapping class="br.com.fip.pp.exoticacalcados.entidades.Usuario" />
   
  </session-factory>
 </hibernate-configuration>
